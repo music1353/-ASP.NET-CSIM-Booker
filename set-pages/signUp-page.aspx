@@ -45,7 +45,7 @@
                 <div class="ui grid">
                     <div class="four wide computer two wide mobile column"></div>
                     <div class="eight wide computer twelve wide mobile column">
-                        <form class="ui form" method="post" action="signUp-page.aspx">
+                        <form class="ui form" runat="server">
                             <h4 class="ui dividing header">填寫基本資料</h4>
                             <div class="nine wide field">
                                 <label>學號 (帳號)</label>

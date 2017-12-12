@@ -34,7 +34,7 @@
                     <a href="#works-section" class="item">探索流程</a>
                     <a href="#feedback-section" class="item">意見回饋</a>
                     <div class="item" id="loginButton">登入</div>
-                    <a href="set-pages/signUp-page.html" id="signUpButton">註冊</a>
+                    <a href="set-pages/signUp-page.aspx" id="signUpButton">註冊</a>
                 </div>
                 <div class="right menu" id="rwd-menu">
                     <div class="ui dropdown item">
@@ -44,7 +44,7 @@
                             <a href="#feedback-section" class="item">意見回饋</a>
                             <div class="divider"></div>
                             <div class="item" id="loginButton-rwd">登入</div>
-                            <a href="set-pages/signUp-page.html" class="item" id="signUpButton-rwd">註冊</a>
+                            <a href="set-pages/signUp-page.aspx" class="item" id="signUpButton-rwd">註冊</a>
                         </div>
                     </div>
                 </div>
