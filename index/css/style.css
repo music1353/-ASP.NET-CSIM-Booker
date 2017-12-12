@@ -1,0 +1,210 @@
+/* primaryColor(green): #30b964 
+   primaryHoverColor(green): #1f984d */
+
+/* set all fonts */
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button,
+* {
+    font-family: 'PingFang SC', 'Noto Sans TC', sans-serif;
+}
+
+/* navbar */
+
+#navbar {
+    height: 87px;
+    width: 100%;
+}
+
+#navbar .header.item {
+    color: forestgreen;
+    font-size: 25px;
+}
+
+@media screen and (min-width: 767px) {
+    #navbar #rwd-menu {
+        display: none;
+    }
+}
+
+
+/* loginButton */
+
+#loginButton {
+    border-left: 1px solid #eee;
+    padding-left: 20px;
+    color: #555;
+    cursor: pointer;
+    background: white;
+}
+
+#loginButton:hover {
+    color: black;
+}
+
+
+/* loginModal */
+
+#loginModal > .header {
+    text-align: center;
+}
+
+
+/* signUpButton */
+
+#signUpButton {
+    width: 60px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    background-color: #30b964;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+#signUpButton:hover {
+    background-color: #1f984d;
+}
+
+
+/* header */
+
+header {
+    width: 100%;
+    height: 85vh;
+    background-image: url("../images/header-img/header-img.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 55%;
+}
+
+.header-content {
+    width: 100%;
+    height: 85vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#header-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#header-form > .banner {
+    width: 400px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    color: white;
+    font-size: 18px;
+    background-color: #30b964;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.login-form {
+    width: 400px;
+    height: 300px;
+    padding: 70px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+/* works-section */
+
+#works-section > .ui.header {
+    width: 100%;
+    height: 250px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#works-section > .ui.header > .content > .sub.header {
+    padding-top: 20px;
+}
+
+#works-section .work {
+    width: 100%;
+    height: 300px;
+}
+
+#works-section .work .work-img {
+    height: 200px;
+    border-radius: 5px;
+}
+
+#works-section .work .work-img > img {
+    display: block;
+    margin: 25px auto;
+}
+
+#works-section .work .work-content {
+    height: 200px;
+}
+
+#works-section .work .work-content > p {
+    color: #999;
+    line-height: 25px;
+}
+
+
+/* feedback-section */
+
+#feedback-section {
+    height: 95vh;
+    background-color: rgba(87, 180, 108, 0.88);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#feedback-section > .ui.header {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 50px;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#feedback-section > .ui.header > .content > .sub.header {
+    padding-top: 20px;
+}
+
+#feedback-form label {
+    color: #333;
+}
+
+
+/* footer */
+
+footer {
+    width: 100%;
+    height: 10vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

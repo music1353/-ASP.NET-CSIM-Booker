@@ -1,0 +1,27 @@
+@media screen and (max-width: 768px) {
+    #navbar #cm-menu {
+        display: none;
+    }
+
+    #rwd-menu {
+        cursor: pointer;
+    }
+
+    /* own-section */
+    #avgRating {
+        border-right: none;
+        border-bottom: solid 1px #eee;
+    }
+
+    #poCount {
+        border-right: none;
+        border-bottom: solid 1px #eee;
+    }
+}
+
+
+@media screen and (min-width: 767px) {
+    #navbar #rwd-menu {
+        display: none;
+    }
+}

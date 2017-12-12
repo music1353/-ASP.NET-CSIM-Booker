@@ -1,0 +1,45 @@
+/* navbar */
+
+#navbar {
+    height: 88px;
+}
+
+#navbar .header.item {
+    color: forestgreen;
+    font-size: 25px;
+}
+
+#cm-menu .ui.dropdown.item {
+    border-left: solid 1px #eee;
+    border-right: solid 1px #eee;
+}
+
+
+/* personal-section */
+
+#personal-section > .segment {}
+
+#personal-section .personal-form {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#personal-section .personal-title > h1 {
+    text-align: center;
+}
+
+
+/* footer */
+
+footer {
+    width: 100%;
+    height: 10vh;
+    color: #1f984d;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

@@ -1,0 +1,15 @@
+/* set all fonts */
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button,
+* {
+    font-family: 'PingFang SC', 'Noto Sans TC', sans-serif;
+}

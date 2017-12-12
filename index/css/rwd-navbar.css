@@ -1,0 +1,10 @@
+@media screen and (max-width: 768px) {
+    #navbar .right.item {
+        display: none;
+    }
+
+    #rwd-menu {
+        cursor: pointer;
+    }
+
+}
