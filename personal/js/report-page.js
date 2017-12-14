@@ -12,11 +12,11 @@ $(function () {
                     prompt: '請填寫被檢舉人的學號'
                 }]
             },
-            changeReason: {
-                identifier: 'changeReason',
+            reportReason: {
+                identifier: 'reportReason',
                 rules: [{
                     type: 'empty',
-                    prompt: '請選擇一項檢舉事由'
+                    prompt: '請填寫檢舉事由'
                 }]
             }
         }

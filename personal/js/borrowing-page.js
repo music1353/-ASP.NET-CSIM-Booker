@@ -9,6 +9,9 @@ $(function () {
 
     // click return button show return-modal(first)
     $('.ui.return.button').bind('click', function () {
+        // 判斷是哪個按鈕
+        // $(this).attr('id');
+        console.log($(this));
         $('.return.modal').modal('show');
     });
 

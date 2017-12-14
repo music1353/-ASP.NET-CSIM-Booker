@@ -38,21 +38,37 @@ $(function () {
             if (val == 'math') {
                 $('#subject-dropdown>.menu').html(
                     '<div class="item" data-value="cal">微積分</div>' +
-                    '<div class="item" data-value="fin-math">管理數學</div>'
+                    '<div class="item" data-value="fin-math">管理數學</div>' +
+                    '<div class="item" data-value="fin-management">財務管理</div>' +
+                    '<div class="item" data-value="dis-math">離散數學</div>' +
+                    '<div class="item" data-value="statistic">統計學</div>'
                 );
             } else if (val == 'lan') {
                 $('#subject-dropdown>.menu').html(
                     '<div class="item" data-value="en">英文</div>' +
-                    '<div class="item" data-value="ch">國文</div>'
+                    '<div class="item" data-value="ch">國文</div>' +
+                    '<div class="item" data-value="jp">日文</div>'
                 );
             } else if (val == 'program') {
                 $('#subject-dropdown>.menu').html(
                     '<div class="item" data-value="java">JAVA程式設計</div>' +
-                    '<div class="item" data-value="algorithms">演算法</div>'
+                    '<div class="item" data-value="data-str">資料結構</div>' +
+                    '<div class="item" data-value="algorithms">演算法</div>' +
+                    '<div class="item" data-value="app">行動平台程式設計</div>' +
+                    '<div class="item" data-value="html">網際網路程式設計</div>'
                 );
             } else if (val == 'management') {
                 $('#subject-dropdown>.menu').html(
-                    '<div class="item" data-value="management-book">管理學</div>'
+                    '<div class="item" data-value="management">管理學</div>' +
+                    '<div class="item" data-value="management-sys">管理資訊系統</div>' +
+                    '<div class="item" data-value="database-management">資料庫管理</div>' +
+                    '<div class="item" data-value="marketing">行銷學</div>'
+                );
+            } else if (val == 'others') {
+                $('#subject-dropdown>.menu').html(
+                    '<div class="item" data-value="accounting">會計學</div>' +
+                    '<div class="item" data-value="computer-intro">計算機概論</div>' +
+                    '<div class="item" data-value="cor-info">企業資料通訊</div>'
                 );
             }
         }
@@ -108,6 +124,13 @@ $(function () {
                 rules: [{
                     type: 'empty',
                     prompt: '請選擇交書地點'
+                }]
+            },
+            introduction: {
+                identifier: 'introduction',
+                rules: [{
+                    type: 'empty',
+                    prompt: '請簡單描述你的教材'
                 }]
             },
         }
