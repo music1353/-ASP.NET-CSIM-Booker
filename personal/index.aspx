@@ -20,30 +20,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
     <script src="https://cdn.bootcss.com/typed.js/2.0.6/typed.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/index-page.js"></script>
 </head>
 <body>
+
     <!-- navbar start -->
     <nav id="navbar">
         <div class="ui top fixed borderless menu">
             <div class="ui container">
-                <a href="index.html" class="header item">CSIM Booker</a>
+                <a href="index.aspx" class="header item">CSIM Booker</a>
                 <div class="right menu" id="cm-menu">
-                    <a href="pages/post-page.html" class="item">刊登教材</a>
-                    <a href="pages/borrow-page.html" class="item">借閱教材</a>
+                    <a href="pages/post-page.aspx" class="item">刊登教材</a>
+                    <a href="pages/borrow-page.aspx" class="item">借閱教材</a>
                     <div class="ui dropdown item">
-                        <img class="ui avatar image" src="images/navbar-user-img/man.png">&nbsp;蘇靖軒
+                        <img class="ui avatar image" src="images/avatar-img/boy-2.png">&nbsp;<%= name %>
                         <i class="dropdown icon"></i>
                         <div class="menu">
-                            <a href="pages/personal-page.html" class="item"><i class="user circle icon"></i>個人資料</a>
-                            <a href="#" class="item" id="messageBtn"><i class="alarm icon">
+                            <a href="pages/personal-page.aspx" class="item"><i class="user circle icon"></i>個人資料</a>
+                            <a href="pages/message-page.aspx" class="item" id="messageBtn"><i class="alarm icon">
                                 <div class="floating ui red label">22</div>
                             </i>通知訊息</a>
-                            <a href="pages/history-page.html" class="item"><i class="cube icon"></i>歷史紀錄</a>
-                            <a href="pages/borrowing-page.html" class="item"><i class="book icon"></i>借閱中書籍</a>
-                            <a href="pages/renting-page.html" class="item"><i class="road icon"></i>出租中書籍</a>
+                            <a href="pages/history-page.aspx" class="item"><i class="cube icon"></i>歷史紀錄</a>
+                            <a href="pages/borrowing-page.aspx" class="item"><i class="book icon"></i>借閱中書籍</a>
+                            <a href="pages/renting-page.aspx" class="item"><i class="road icon"></i>出租中書籍</a>
                             <div class="ui divider"></div>
-                            <a href="pages/opinion-page.html" class="item"><i class="talk icon"></i>意見反應</a>
-                            <a href="pages/report-page.html" class="item"><i class="remove user icon"></i>檢舉專區</a>
+                            <a href="pages/opinion-page.aspx" class="item"><i class="talk icon"></i>意見反應</a>
+                            <a href="pages/report-page.aspx" class="item"><i class="remove user icon"></i>檢舉專區</a>
                             <div class="ui divider"></div>
                             <a href="#" class="item"><i class="sign out icon"></i>登出</a>
                         </div>
@@ -53,19 +55,19 @@
                     <div class="ui dropdown item">
                         <i class="sidebar icon"></i>
                         <div class="menu">
-                            <a href="pages/post-page.html" class="item">刊登教材</a>
-                            <a href="pages/borrow-page.html" class="item">借閱教材</a>
+                            <a href="pages/post-page.aspx" class="item">刊登教材</a>
+                            <a href="pages/borrow-page.aspx" class="item">借閱教材</a>
                             <div class="divider"></div>
-                            <a href="pages/personal-page.html" class="item"><i class="user circle icon"></i>個人資料</a>
-                            <a href="#" class="item"><i class="alarm icon">
+                            <a href="pages/personal-page.aspx" class="item"><i class="user circle icon"></i>個人資料</a>
+                            <a href="pages/message-page.aspx" class="item"><i class="alarm icon">
                                 <div class="floating ui red label">22</div>
                             </i>通知訊息</a>
-                            <a href="pages/history-page.html" class="item"><i class="cube icon"></i>歷史紀錄</a>
-                            <a href="pages/borrowing-page.html" class="item"><i class="book icon"></i>借閱中書籍</a>
-                            <a href="pages/renting-page.html" class="item"><i class="road icon"></i>出租中書籍</a>
+                            <a href="pages/history-page.aspx" class="item"><i class="cube icon"></i>歷史紀錄</a>
+                            <a href="pages/borrowing-page.aspx" class="item"><i class="book icon"></i>借閱中書籍</a>
+                            <a href="pages/renting-page.aspx" class="item"><i class="road icon"></i>出租中書籍</a>
                             <div class="ui divider"></div>
-                            <a href="pages/opinion-page.html" class="item"><i class="talk icon"></i>意見反應</a>
-                            <a href="pages/report-page.html" class="item"><i class="remove user icon"></i>檢舉專區</a>
+                            <a href="pages/opinion-page.aspx" class="item"><i class="talk icon"></i>意見反應</a>
+                            <a href="pages/report-page.aspx" class="item"><i class="remove user icon"></i>檢舉專區</a>
                             <div class="ui divider"></div>
                             <a href="#" class="item"><i class="sign out icon"></i>登出</a>
                         </div>
@@ -75,6 +77,7 @@
         </div>
     </nav>
     <!-- navbar end -->
+
 
     <!-- sayHello-section start -->
     <section id="sayHello-section">
@@ -142,7 +145,7 @@
                         <!-- card1 -->
                         <div class="ui card">
                             <div class="content">
-                                <img class="ui avatar image" src="images/temp-avatar-img/girl-1.png">
+                                <img class="ui avatar image" src="images/avatar-img/girl-1.png">
                                 小美
                             </div>
                             <div class="image">
@@ -169,7 +172,7 @@
                                     </div>
                                 </div>
                                 <div class="right floated meta" style="margin-left: 10px;">
-                                    <button class="ui green button">借閱</button>
+                                    <button class="ui green borrow button">借閱</button>
                                 </div>
 
                             </div>
@@ -180,7 +183,7 @@
                     <div class="column">
                         <div class="ui card">
                             <div class="content">
-                                <img class="ui avatar image" src="images/temp-avatar-img/boy-1.png">
+                                <img class="ui avatar image" src="images/avatar-img/boy-1.png">
                                 阿冠
                             </div>
                             <div class="image">
@@ -207,7 +210,7 @@
                                     </div>
                                 </div>
                                 <div class="right floated meta" style="margin-left: 10px;">
-                                    <button class="ui green button">借閱</button>
+                                    <button class="ui green borrow button">借閱</button>
                                 </div>
                             </div>
                         </div>
@@ -217,7 +220,7 @@
                     <div class="column">
                         <div class="ui card">
                             <div class="content">
-                                <img class="ui avatar image" src="images/temp-avatar-img/girl-2.png">
+                                <img class="ui avatar image" src="images/avatar-img/girl-2.png">
                                 琪琪
                             </div>
                             <div class="image">
@@ -244,7 +247,7 @@
                                     </div>
                                 </div>
                                 <div class="right floated meta" style="margin-left: 10px;">
-                                    <button class="ui green button">借閱</button>
+                                    <button class="ui green borrow button">借閱</button>
                                 </div>
                             </div>
                         </div>
@@ -254,7 +257,7 @@
                     <div class="four wide column">
                         <div class="ui card">
                             <div class="content">
-                                <img class="ui avatar image" src="images/temp-avatar-img/boy-2.png">
+                                <img class="ui avatar image" src="images/avatar-img/boy-2.png">
                                 鳴人
                             </div>
                             <div class="image">
@@ -281,7 +284,7 @@
                                     </div>
                                 </div>
                                 <div class="right floated meta" style="margin-left: 10px;">
-                                    <button class="ui green button">借閱</button>
+                                    <button class="ui green borrow button">借閱</button>
                                 </div>
                             </div>
                         </div>
@@ -291,6 +294,20 @@
         </div>
     </section>
     <!-- recommend-section end -->
+
+    <!-- borrow-modal start -->
+    <div class="borrow-modal">
+        <div class="ui mini coupled borrow modal">
+            <div class="header" style="text-align: center;">借閱書籍</div>
+            <div class="content">確定要借閱書籍嗎？</div>
+            <div class="actions">
+                <div class="ui cancel red button">取消</div>
+                <button class="ui green button" id="borrowModal-button">確定</button>
+            </div>
+        </div>
+    </div>
+    <!-- borrow-modal end -->
+
 
     <!-- footer start -->
     <footer>
