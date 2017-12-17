@@ -21,44 +21,8 @@
     <script src="../js/main.js"></script>
 </head>
 <body>
-    <!-- navbar start -->
-    <nav id="navbar">
-        <div class="ui top fixed borderless menu">
-            <div class="ui container">
-                <a href="index.html" class="header item">CSIM Booker</a>
-                <div class="right menu" id="cm-menu">
-                    <a href="members.html" class="item">會員名單</a>
-                    <a href="opinions.html" class="item">意見反應</a>
-                    <a href="reports.html" class="item">檢舉事由</a>
-                    <div class="ui dropdown item">
-                        <img class="ui avatar image" src="../images/admin-image/admin-psyduck.png">&nbsp;管理員
-                        <i class="dropdown icon"></i>
-                        <div class="menu">
-                            <a href="../../index.html" class="item"><i class="sign out icon"></i>登出</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="right menu" id="rwd-menu">
-                    <div class="ui dropdown item">
-                        <i class="sidebar icon"></i>
-                        <div class="menu">
-                            <a href="members.html" class="item">會員名單</a>
-                            <a href="opinions.html" class="item">意見反應</a>
-                            <a href="reports.html" class="item">檢舉事由</a>
-                            <div class="ui divider"></div>
-                            <a href="../../index.html" class="item"><i class="sign out icon"></i>登出</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- navbar end -->
+    <!-- #include file="includeStatic/navbar.html" -->
 
-    <!-- footer start -->
-    <footer>
-        <h5>CSIM Booker &copy; 2017. All rights reserved</h5>
-    </footer>
-    <!-- footer end -->
+    <!-- #include file="includeStatic/footer.html" -->
 </body>
 </html>
