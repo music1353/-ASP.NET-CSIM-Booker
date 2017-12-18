@@ -21,8 +21,8 @@
     <script src="../js/main.js"></script>
 </head>
 <body>
-    <!-- #include file="includeStatic/navbar.html" -->
+    <!-- #include file="templates/navbar.html" -->
 
-    <!-- #include file="includeStatic/footer.html" -->
+    <!-- #include file="templates/footer.html" -->
 </body>
 </html>

@@ -23,7 +23,7 @@
     <script src="../js/report-page.js"></script>
 </head>
 <body>
-    <!-- #include file="includeStatic/navbar.html" -->
+    <!-- #include file="templates/navbar.html" -->
 
     <!-- report-section start -->
     <section id="report-section">
@@ -53,6 +53,6 @@
     </section>
     <!-- report-section end -->
 
-    <!-- #include file="includeStatic/footer.html" -->
+    <!-- #include file="templates/footer.html" -->
 </body>
 </html>

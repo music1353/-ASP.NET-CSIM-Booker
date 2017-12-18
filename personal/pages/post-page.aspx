@@ -23,7 +23,7 @@
     <script src="../js/post-page.js"></script>
 </head>
 <body>
-    <!-- #include file="includeStatic/navbar.html" -->
+    <!-- #include file="templates/navbar.html" -->
 
     <!-- post-section start -->
     <section id="post-section">
@@ -154,6 +154,6 @@
     </div>
     <!-- post-modal end -->
 
-    <!-- #include file="includeStatic/footer.html" -->
+    <!-- #include file="templates/footer.html" -->
 </body>
 </html>

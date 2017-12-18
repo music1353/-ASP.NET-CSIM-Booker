@@ -23,7 +23,7 @@
     <script src="../js/renting-page.js"></script>
 </head>
 <body>
-    <!-- #include file="includeStatic/navbar.html" -->
+    <!-- #include file="templates/navbar.html" -->
 
     <!-- renting-section start -->
     <section id="renting-section">
@@ -141,6 +141,6 @@
     </div>
     <!-- feedback-modal end -->
 
-    <!-- #include file="includeStatic/footer.html" -->
+    <!-- #include file="templates/footer.html" -->
 </body>
 </html>

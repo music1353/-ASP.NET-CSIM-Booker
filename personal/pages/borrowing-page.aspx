@@ -24,7 +24,7 @@
 </head>
 <body>
 
-    <!-- #include file="includeStatic/navbar.html" -->
+    <!-- #include file="templates/navbar.html" -->
 
     <!-- borrowing-section start -->
     <section id="borrowing-section">
@@ -150,6 +150,6 @@
     </div>
     <!-- feedback-modal end -->
 
-    <!-- #include file="includeStatic/footer.html" -->
+    <!-- #include file="templates/footer.html" -->
 </body>
 </html>

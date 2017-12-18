@@ -21,7 +21,7 @@
     <script src="../js/personal-page.js"></script>
 </head>
 <body>
-    <!-- #include file="includeStatic/navbar.html" -->
+    <!-- #include file="templates/navbar.html" -->
 
     <!-- personal-section start -->
     <section id="personal-section">
@@ -75,6 +75,6 @@
     </section>
     <!-- personal-section end -->
 
-    <!-- #include file="includeStatic/footer.html" -->
+    <!-- #include file="templates/footer.html" -->
 </body>
 </html>

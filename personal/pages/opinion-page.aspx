@@ -22,7 +22,7 @@
     <script src="../js/main.js"></script>
 </head>
 <body>
-    <!-- #include file="includeStatic/navbar.html" -->
+    <!-- #include file="templates/navbar.html" -->
     
     <!-- opinion-section start -->
     <section id="opinion-section">
@@ -48,6 +48,6 @@
     </section>
     <!-- opinion-section end -->
 
-    <!-- #include file="includeStatic/footer.html" -->
+    <!-- #include file="templates/footer.html" -->
 </body>
 </html>

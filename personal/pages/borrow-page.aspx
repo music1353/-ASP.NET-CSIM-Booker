@@ -23,7 +23,7 @@
 </head>
 <body>
 
-    <!-- #include file="includeStatic/navbar.html" -->
+    <!-- #include file="templates/navbar.html" -->
 
     <!-- borrow-section start -->
     <section id="borrow-section">
@@ -239,6 +239,6 @@
     </div>
     <!-- borrow-complete-modal end -->
 
-    <!-- #include file="includeStatic/footer.html" -->
+    <!-- #include file="templates/footer.html" -->
 </body>
 </html>

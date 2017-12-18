@@ -24,7 +24,7 @@
     <script src="../js/main.js"></script>
 </head>
 <body>
-    <!-- #include file="includeStatic/navbar.html" -->
+    <!-- #include file="templates/navbar.html" -->
 
     <!-- message-section start -->
     <section id="message-section">
@@ -44,6 +44,6 @@
     </section>
     <!-- history-section end -->
 
-    <!-- #include file="includeStatic/footer.html" -->
+    <!-- #include file="templates/footer.html" -->
 </body>
 </html>

@@ -26,7 +26,7 @@
     <script src="../js/history-page.js"></script>
 </head>
 <body>
-    <!-- #include file="includeStatic/navbar.html" -->
+    <!-- #include file="templates/navbar.html" -->
 
     <!-- history-section start -->
     <section id="history-section">
@@ -86,6 +86,6 @@
     </section>
     <!-- history-section end -->
 
-    <!-- #include file="includeStatic/footer.html" -->
+    <!-- #include file="templates/footer.html" -->
 </body>
 </html>
