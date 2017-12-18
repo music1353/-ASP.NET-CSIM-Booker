@@ -133,7 +133,7 @@ $(function () {
 
             // ajax to ASP.NET
             $.ajax({
-                url: "borrow-ajax.aspx",
+                url: "ajax/borrow-ajax.aspx",
                 type: "POST",
                 data: {
                     'bookSubject': val,
@@ -181,9 +181,9 @@ $(function () {
                             '</div>';
 
                         $(".borrow-cards>.ui.grid").append(card_template);
-                    },
+                    });
+                },
             });
-
         }
     });
 

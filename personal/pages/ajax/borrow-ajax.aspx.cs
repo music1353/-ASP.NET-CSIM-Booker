@@ -14,7 +14,6 @@ public partial class personal_pages_borrow_ajax : System.Web.UI.Page {
 
         if (bookType == "all") {
             // SQL查詢
-            //
 
             // ajax回傳的data
             JavaScriptSerializer serializer = new JavaScriptSerializer();
@@ -40,16 +39,63 @@ public partial class personal_pages_borrow_ajax : System.Web.UI.Page {
 
         } else {
 
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            String bookSubject = Request.Form["bookSubject"];
 
-            var responseEntities = new List<Book>(){
-                new Book{ Name="QQ", ID="qq1"},
-                new Book{ Name="QQ", ID="qq2"}
-            };
+            if (bookSubject == "cal") {
+                // SQL查詢
 
-            var result = serializer.Serialize(responseEntities);
-            Response.Write(result);
-            Response.End();
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+                var responseEntities = new List<Book>(){
+                    new Book{ Name="小美", Avatar="images/avatar-img/girl-1.png", ID="04156111", Star="4.2", BookName="超猛微積分",
+                              BookImage="images/temp-books-img/temp-calc.jpg", BookDescription="我做的超認真的呦！!",
+                              ChangeSite ="[雙溪] 望星廣場", ChangeTime="2017/11/30 上午10:00"},
+                };
+
+                var result = serializer.Serialize(responseEntities);
+                Response.Write(result);
+                Response.End();
+
+            } else if (bookSubject == "fin-math") {
+
+            } else if (bookSubject == "fin-management") {
+
+            } else if (bookSubject == "dis-math") {
+
+            } else if (bookSubject == "statistic") {
+
+            } else if (bookSubject == "en") {
+
+            } else if (bookSubject == "ch") {
+
+            } else if (bookSubject == "jp") {
+
+            } else if (bookSubject == "java") {
+
+            } else if (bookSubject == "data-str") {
+
+            } else if (bookSubject == "algorithms") {
+
+            } else if (bookSubject == "app") {
+
+            } else if (bookSubject == "html") {
+
+            } else if (bookSubject == "management") {
+
+            } else if (bookSubject == "management-sys") {
+
+            } else if (bookSubject == "database-management") {
+
+            } else if (bookSubject == "marketing") {
+
+            } else if (bookSubject == "accounting") {
+
+            } else if (bookSubject == "computer-intro") {
+
+            } else if (bookSubject == "cor-info") {
+
+            }
+
         }
 
     }
