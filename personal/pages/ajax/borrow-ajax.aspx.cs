@@ -16,13 +16,22 @@ public partial class personal_pages_borrow_ajax : System.Web.UI.Page {
             // SQL查詢
             //
 
+            // ajax回傳的data
             JavaScriptSerializer serializer = new JavaScriptSerializer();
 
             var responseEntities = new List<Book>(){
                 new Book{ Name="小美", Avatar="images/avatar-img/girl-1.png", ID="04156111", Star="4.2", BookName="超猛微積分",
                           BookImage="images/temp-books-img/temp-calc.jpg", BookDescription="我做的超認真的呦！!",
                           ChangeSite ="[雙溪] 望星廣場", ChangeTime="2017/11/30 上午10:00"},
-                // new Book{ Name="Joey2", ID="Id2"}
+                new Book{ Name="小胖", Avatar="images/avatar-img/boy-2.png", ID="04156112", Star="3.3", BookName="超爛微積分",
+                          BookImage="images/temp-books-img/temp-calc.jpg", BookDescription="我做的超爛的呦！!",
+                          ChangeSite ="[雙溪] 望星廣場", ChangeTime="2017/11/30 上午10:00"},
+                new Book{ Name="小P", Avatar="images/avatar-img/boy-1.png", ID="04156112", Star="3.3", BookName="超爛微積分",
+                          BookImage="images/temp-books-img/temp-calc.jpg", BookDescription="我做的超爛的呦！!",
+                          ChangeSite ="[雙溪] 望星廣場", ChangeTime="2017/11/30 上午10:00"},
+                new Book{ Name="小待", Avatar="images/avatar-img/boy-3.png", ID="04156112", Star="3.3", BookName="超爛微積分",
+                          BookImage="images/temp-books-img/temp-calc.jpg", BookDescription="我做的超爛的呦！!",
+                          ChangeSite ="[雙溪] 望星廣場", ChangeTime="2017/11/30 上午10:00"},
             };
 
             var result = serializer.Serialize(responseEntities);

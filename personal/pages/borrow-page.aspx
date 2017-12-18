@@ -66,8 +66,8 @@
             </div>
             <div class="borrow-cards">
                 <div class="four column ui stackable grid">
+                    <!-- card1 -->
                     <div class="column">
-                        <!-- card1 -->
                         <div class="ui card">
                             <div class="content">
                                 <img class="ui avatar image" src="../images/avatar-img/girl-1.png"> 小美
@@ -98,7 +98,6 @@
                                 <div class="right floated meta" style="margin-left: 10px;">
                                     <button class="ui green borrow button">借閱</button>
                                 </div>
-
                             </div>
                         </div>
                     </div>

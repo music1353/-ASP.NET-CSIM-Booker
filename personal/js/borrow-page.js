@@ -29,7 +29,8 @@ $(function () {
                         // 模板進html
                         var myarray = $.parseJSON(data);
                         $.each(myarray, function (i, item) {
-                            var card_template = '<div class="ui card" id="' + item.ID + '">' +
+                            var card_template = '<div class="column">' +
+                                '<div class="ui card" id="' + item.ID + '">' +
                                 '<div class="content">' +
                                 '<img class="ui avatar image" src="../' + item.Avatar + '"> ' + item.Name +
                                 '</div>' +
@@ -64,10 +65,9 @@ $(function () {
                                 '</div>';
 
                             $(".borrow-cards>.ui.grid").append(card_template);
-
-                            // console.log(item.Name + ", " + item.ID);
                         });
-                        console.log(data + "all ajax success");
+                        console.log(data);
+
                         // click borrow button show borrow-modal(first)
                         $('.ui.borrow.button').bind('click', function () {
                             // 判斷是哪個按鈕
@@ -131,19 +131,57 @@ $(function () {
     $('#subject-dropdown').dropdown({
         onChange: function (val) {
 
-            // 清空原本的template
-            // 
-
             // ajax to ASP.NET
             $.ajax({
-                url: "borrow-page.aspx",
+                url: "borrow-ajax.aspx",
                 type: "POST",
                 data: {
-                    'val': val,
+                    'bookSubject': val,
                 },
                 success: function (data) {
+                    // 清空原本的template
+                    $(".borrow-cards>.ui.grid").empty();
+
                     // 模板進html
-                },
+                    var myarray = $.parseJSON(data);
+                    $.each(myarray, function (i, item) {
+                        var card_template = '<div class="column">' +
+                            '<div class="ui card" id="' + item.ID + '">' +
+                            '<div class="content">' +
+                            '<img class="ui avatar image" src="../' + item.Avatar + '"> ' + item.Name +
+                            '</div>' +
+                            '<div class="image">' +
+                            '<img src="../' + item.BookImage + '">' +
+                            '</div>' +
+                            '<div class="content">' +
+                            '<div class="right floated meta">' +
+                            item.Star + '<i class="yellow star icon"></i>' +
+                            '</div>' +
+                            '<div class="header">' + item.BookName + '</div>' +
+                            '<div class="description">' +
+                            item.BookDescription +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="extra content">' +
+                            '<div class="left floated meta">' +
+                            '<div class="ui icon button" data-tooltip="' + item.ChangeSite + '" data-inverted="">' +
+                            '<i class="marker icon"></i>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="left floated meta" style="margin-left: 10px;">' +
+                            '<div class="ui icon button" data-tooltip="' + item.ChangeTime + '" data-inverted="">' +
+                            '<i class="wait icon"></i>' +
+                            '</div>' +
+                            '</div>' +
+                            '<div class="right floated meta" style="margin-left: 10px;">' +
+                            '<button class="ui green borrow button">借閱</button>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+
+                        $(".borrow-cards>.ui.grid").append(card_template);
+                    },
             });
 
         }
