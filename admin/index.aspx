@@ -25,16 +25,16 @@
     <nav id="navbar">
         <div class="ui top fixed borderless menu">
             <div class="ui container">
-                <a href="index.html" class="header item">CSIM Booker</a>
+                <a href="index.aspx" class="header item">CSIM Booker</a>
                 <div class="right menu" id="cm-menu">
-                    <a href="pages/members.html" class="item">會員名單</a>
-                    <a href="pages/opinions.html" class="item">意見反應</a>
-                    <a href="pages/reports.html" class="item">檢舉事由</a>
+                    <a href="pages/members.aspx" class="item">會員名單</a>
+                    <a href="pages/opinions.aspx" class="item">意見反應</a>
+                    <a href="pages/reports.aspx" class="item">檢舉事由</a>
                     <div class="ui dropdown item">
                         <img class="ui avatar image" src="images/admin-image/admin-psyduck.png">&nbsp;管理員
                         <i class="dropdown icon"></i>
                         <div class="menu">
-                            <a href="../index.html" class="item"><i class="sign out icon"></i>登出</a>
+                            <a href="../index.aspx" class="item"><i class="sign out icon"></i>登出</a>
                         </div>
                     </div>
                 </div>
@@ -42,11 +42,11 @@
                     <div class="ui dropdown item">
                         <i class="sidebar icon"></i>
                         <div class="menu">
-                            <a href="pages/members.html" class="item">會員名單</a>
-                            <a href="pages/opinions.html" class="item">意見反應</a>
-                            <a href="pages/reports.html" class="item">檢舉事由</a>
+                            <a href="pages/members.aspx" class="item">會員名單</a>
+                            <a href="pages/opinions.aspx" class="item">意見反應</a>
+                            <a href="pages/reports.aspx" class="item">檢舉事由</a>
                             <div class="ui divider"></div>
-                            <a href="../index.html" class="item"><i class="sign out icon"></i>登出</a>
+                            <a href="../index.aspx" class="item"><i class="sign out icon"></i>登出</a>
                         </div>
                     </div>
                 </div>
