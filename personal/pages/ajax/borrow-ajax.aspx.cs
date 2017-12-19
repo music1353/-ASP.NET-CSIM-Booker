@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+using System.Collections;
 
 public partial class personal_pages_borrow_ajax : System.Web.UI.Page {
 

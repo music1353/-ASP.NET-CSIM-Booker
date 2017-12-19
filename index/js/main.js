@@ -22,11 +22,6 @@ $(function () {
         $('#loginModal').modal('show');
     });
 
-    // show signInModal
-    $('#signInButton').bind('click', function () {
-        $('#signInModal').modal('show');
-    });
-
     // rwd-navber dropdown
     $('.ui.dropdown.item').dropdown();
 

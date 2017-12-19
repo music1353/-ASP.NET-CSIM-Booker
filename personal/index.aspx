@@ -47,7 +47,7 @@
                             <a href="pages/opinion-page.aspx" class="item"><i class="talk icon"></i>意見反應</a>
                             <a href="pages/report-page.aspx" class="item"><i class="remove user icon"></i>檢舉專區</a>
                             <div class="ui divider"></div>
-                            <a href="#" class="item"><i class="sign out icon"></i>登出</a>
+                            <a href="pages/logout.aspx" class="item"><i class="sign out icon"></i>登出</a>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                             <a href="pages/opinion-page.aspx" class="item"><i class="talk icon"></i>意見反應</a>
                             <a href="pages/report-page.aspx" class="item"><i class="remove user icon"></i>檢舉專區</a>
                             <div class="ui divider"></div>
-                            <a href="#" class="item"><i class="sign out icon"></i>登出</a>
+                            <a href="pages/logout.aspx" class="item"><i class="sign out icon"></i>登出</a>
                         </div>
                     </div>
                 </div>
@@ -77,8 +77,7 @@
         </div>
     </nav>
     <!-- navbar end -->
-
-
+    
     <!-- sayHello-section start -->
     <section id="sayHello-section">
         <div class="ui container">

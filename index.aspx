@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="index" %>
 
 <!DOCTYPE html>
 
@@ -57,7 +57,7 @@
     <div class="ui mini modal" id="loginModal">
         <div class="header">登入</div>
         <div class="content">
-            <form class="ui form" runat="server">
+            <form class="ui form" method="post" action="index/modal-login.aspx">
                 <div class="field">
                     <label>學號</label>
                     <input type="text" name="loginAccount" placeholder="Student ID" required>
@@ -93,7 +93,7 @@
                 <div class="six wide computer only column" id="header-form">
                     <div class="banner">馬上登入，探索書叢</div>
                     <div class="login-form">
-                        <form class="ui form" method="post" action="index.aspx">
+                        <form class="ui form" id="mainLoginForm" runat="server">
                             <div class="field">
                                 <label>學號</label>
                                 <input type="text" name="loginAccount" placeholder="Student ID" required>
@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                             <div class="ui divider"></div>
-                            <input class="ui green button" type="submit" value="登入" >
+                            <input class="ui green button" type="submit" value="登入">
                             <a href="#" style="padding-left: 100px;">忘記密碼？</a>
                         </form>
                     </div>
