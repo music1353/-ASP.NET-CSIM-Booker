@@ -34,7 +34,7 @@
                         <img class="ui avatar image" src="images/admin-image/admin-psyduck.png">&nbsp;管理員
                         <i class="dropdown icon"></i>
                         <div class="menu">
-                            <a href="../index.aspx" class="item"><i class="sign out icon"></i>登出</a>
+                            <a href="pages/logout.aspx" class="item"><i class="sign out icon"></i>登出</a>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                             <a href="pages/opinions.aspx" class="item">意見反應</a>
                             <a href="pages/reports.aspx" class="item">檢舉事由</a>
                             <div class="ui divider"></div>
-                            <a href="../index.aspx" class="item"><i class="sign out icon"></i>登出</a>
+                            <a href="pages/logout.aspx" class="item"><i class="sign out icon"></i>登出</a>
                         </div>
                     </div>
                 </div>

@@ -85,7 +85,7 @@
                 <span id="typed"></span>
                 <script>
                     var typed = new Typed('#typed', {
-                        strings: ["你好呀! ^1000 蘇靖軒^_^", "今天^1500，你閱讀了嗎？"],
+                        strings: ["你好呀! ^1000 <%= name %>^_^", "今天^1500，你閱讀了嗎？"],
                         smartBackspace: true,
                         startDelay: 1000,
                         typeSpeed: 200,

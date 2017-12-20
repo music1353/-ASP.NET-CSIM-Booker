@@ -5,10 +5,16 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class admin_pages_reports : System.Web.UI.Page
-{
-    protected void Page_Load(object sender, EventArgs e)
-    {
+public partial class admin_pages_reports : System.Web.UI.Page {
 
+    protected void Page_Load(object sender, EventArgs e) {
+
+        if (Session["isLogin"] == "Y" && Session["isAdmin"] == "Y") {
+            // pass
+        } else {
+            Response.Redirect("../index.aspx");
+        }
+
+        // TODO
     }
 }
