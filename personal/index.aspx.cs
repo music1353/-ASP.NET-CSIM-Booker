@@ -14,12 +14,17 @@ public partial class personal_Default : System.Web.UI.Page {
     protected String userID;
     protected String name, avatar, star, history_post_book_num, history_borrow_book_num;
 
-    ArrayList teachingMaterialIDAL = new ArrayList();
-    ArrayList teachingMaterialNameAL = new ArrayList();
-    ArrayList publisherNameAL = new ArrayList();
-    ArrayList publisherAvatarAL = new ArrayList();
-    ArrayList materialPictureAL = new ArrayList();
-    ArrayList materialDescribeAL = new ArrayList();
+    protected ArrayList teachingMaterialIDAL = new ArrayList();
+    protected ArrayList teachingMaterialNameAL = new ArrayList();
+    protected ArrayList publisherIDAL = new ArrayList();
+    protected ArrayList publisherNameAL = new ArrayList();
+    protected ArrayList publisherAvatarAL = new ArrayList();
+    protected ArrayList publisherStarAL = new ArrayList();
+    protected ArrayList materialPictureAL = new ArrayList();
+    protected ArrayList materialDescribeAL = new ArrayList();
+    protected ArrayList rentPlaceAL = new ArrayList();
+    protected ArrayList rentDateAndTimeAL = new ArrayList();
+    protected Int16 allLength;
 
     protected void Page_Load(object sender, EventArgs e) {
 
@@ -98,8 +103,56 @@ public partial class personal_Default : System.Web.UI.Page {
         hbbdr.Close();
         // hbbsql end
 
+        // allbooksql start
+        String allbooksql = "SELECT TOP 4 [TeachingMaterial].TeachingMaterialID, [TeachingMaterial].TeachingMaterialName, [Member].StudentID, " +
+                            "[Member].StudentName, [Member].Picture, [TeachingMaterial].MaterialPicture, [TeachingMaterial].MaterialDescribe, " +
+                            "[Lease].RentPlace, [Lease].RentDate, [Lease].RentTime " +
+                            "FROM [Member], [TeachingMaterial], [Lease] " +
+                            "WHERE [Member].StudentID=[TeachingMaterial].PublisherID AND [Lease].TeachingMaterialID=[TeachingMaterial].TeachingMaterialID "+
+                            "ORDER BY NEWID()";
+
+        SqlCommand allbookCmd = new SqlCommand(allbooksql, Conn);
+
+        SqlDataReader allbookdr = allbookCmd.ExecuteReader();
+
+        while (allbookdr.Read()) {
+            teachingMaterialIDAL.Add(allbookdr["TeachingMaterialID"].ToString());
+            teachingMaterialNameAL.Add(allbookdr["TeachingMaterialName"].ToString());
+            publisherIDAL.Add(allbookdr["StudentID"].ToString());
+            publisherNameAL.Add(allbookdr["StudentName"].ToString());
+            publisherAvatarAL.Add(allbookdr["Picture"].ToString());
+            materialPictureAL.Add("../" + allbookdr["MaterialPicture"].ToString());
+            materialDescribeAL.Add(allbookdr["MaterialDescribe"].ToString());
+            rentPlaceAL.Add(allbookdr["RentPlace"].ToString());
+            rentDateAndTimeAL.Add(allbookdr["RentDate"].ToString() + " " + allbookdr["RentTime"].ToString());
+        }
+
+        allLength = Convert.ToInt16(teachingMaterialIDAL.Count);
+
+        allbookCmd.Cancel();
+        allbookdr.Close();
+        // allbooksql end
+
+        // publisherstarsql start
+        foreach (String id in publisherIDAL) {
+            String publisherstarsql = "SELECT [Member].StudentName,ROUND(AVG([UserEvaluation].Grade),1) as AverageGrade " +
+                                      "FROM [Member],[UserEvaluation] " +
+                                      "WHERE [UserEvaluation]. EvaluatedStudentID=" + id + " AND [UserEvaluation].EvaluatedStudentID =[Member].StudentID " +
+                                      "GROUP BY [Member].StudentName";
+            SqlCommand publisherstarCmd = new SqlCommand(publisherstarsql, Conn);
+            SqlDataReader publisherstardr = publisherstarCmd.ExecuteReader();
+
+            while (publisherstardr.Read()) {
+                publisherStarAL.Add(publisherstardr["AverageGrade"].ToString());
+            }
+
+            publisherstarCmd.Cancel();
+            publisherstardr.Close();
+        }
+        // publisherstarsql end
+
         Conn.Close();
 
-        // System.Diagnostics.Debug.Write(Session["userID"]);
     }
+
 }

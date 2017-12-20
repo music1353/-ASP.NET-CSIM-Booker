@@ -16,13 +16,17 @@ $(function () {
             if (val == 'all') {
                 $('#subject-dropdown').addClass('disabled');
 
+                // loading show
+                $("#loading").show();
+
                 $.ajax({
-                    url: "ajax/borrow-ajax.aspx",
+                    url: "ajax/set-borrow-page-ajax.aspx",
                     type: "POST",
                     data: {
-                        "bookType": "all",
+                        "bookSubject": "all",
                     },
                     success: function (data) {
+
                         // 清除原本templates
                         $(".borrow-cards>.ui.grid").empty();
 
@@ -32,10 +36,10 @@ $(function () {
                             var card_template = '<div class="column">' +
                                 '<div class="ui card" id="' + item.ID + '">' +
                                 '<div class="content">' +
-                                '<img class="ui avatar image" src="../' + item.Avatar + '"> ' + item.Name +
+                                '<img class="ui avatar image" src="' + item.Avatar + '"> ' + item.Name +
                                 '</div>' +
                                 '<div class="image">' +
-                                '<img src="../' + item.BookImage + '">' +
+                                '<img src="' + item.BookImage + '">' +
                                 '</div>' +
                                 '<div class="content">' +
                                 '<div class="right floated meta">' +
@@ -66,7 +70,6 @@ $(function () {
 
                             $(".borrow-cards>.ui.grid").append(card_template);
                         });
-                        console.log(data);
 
                         // click borrow button show borrow-modal(first)
                         $('.ui.borrow.button').bind('click', function () {
@@ -87,6 +90,9 @@ $(function () {
                                 }).modal('show');
                             });
                         });
+
+                        // loading hide
+                        $("#loading").hide();
                     },
                 });
 
@@ -134,16 +140,20 @@ $(function () {
     $('#subject-dropdown').dropdown({
         onChange: function (val) {
 
+            // 清空原本的template
+            $(".borrow-cards>.ui.grid").empty();
+
+            // loading show
+            $("#loading").show();
+
             // ajax to ASP.NET
             $.ajax({
-                url: "ajax/borrow-ajax.aspx",
+                url: "ajax/set-borrow-page-ajax.aspx",
                 type: "POST",
                 data: {
                     'bookSubject': val,
                 },
                 success: function (data) {
-                    // 清空原本的template
-                    $(".borrow-cards>.ui.grid").empty();
 
                     // 模板進html
                     var myarray = $.parseJSON(data);
@@ -151,10 +161,10 @@ $(function () {
                         var card_template = '<div class="column">' +
                             '<div class="ui card" id="' + item.ID + '">' +
                             '<div class="content">' +
-                            '<img class="ui avatar image" src="../' + item.Avatar + '"> ' + item.Name +
+                            '<img class="ui avatar image" src="' + item.Avatar + '"> ' + item.Name +
                             '</div>' +
                             '<div class="image">' +
-                            '<img src="../' + item.BookImage + '">' +
+                            '<img src="' + item.BookImage + '">' +
                             '</div>' +
                             '<div class="content">' +
                             '<div class="right floated meta">' +
@@ -185,6 +195,9 @@ $(function () {
 
                         $(".borrow-cards>.ui.grid").append(card_template);
                     });
+
+                    // loading hide
+                    $("#loading").hide();
                 },
             });
         }

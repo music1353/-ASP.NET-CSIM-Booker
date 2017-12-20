@@ -141,43 +141,42 @@
             <div class="recommend-book">
                 <h1>推薦書單</h1>
                 <div class="four column ui stackable grid">
-                    <!-- card1 -->
-                    <div class="column">
-                        <div class="ui card">
+                    <% for (int i = 0; i < allLength; i++) { %>
+                       <div class="column">
+                          <div class="ui card" id="<%= teachingMaterialIDAL[i] %>">
                             <div class="content">
-                                <img class="ui avatar image" src="images/avatar-img/girl-1.png">
-                                小美
+                                <img class="ui avatar image" src="<%= publisherAvatarAL[i] %>""> <%= publisherNameAL[i] %>
                             </div>
                             <div class="image">
-                                <img src="images/temp-books-img/temp-calc.jpg">
+                                <img src="<%= materialPictureAL[i] %>"">
                             </div>
                             <div class="content">
                                 <div class="right floated meta">
-                                    4.2<i class="yellow star icon"></i>
+                                    <%= publisherStarAL[i] %><i class="yellow star icon"></i>
                                 </div>
-                                <div class="header ellipsis">微積分筆記213123123123123123123</div>
+                                <div class="header ellipsis"><%= teachingMaterialNameAL[i] %></div>
                                 <div class="description">
-                                    我做的超認真的呦！!
+                                    <%= materialDescribeAL[i] %>
                                 </div>
                             </div>
                             <div class="extra content">
                                 <div class="left floated meta">
-                                    <div class="ui icon button" data-tooltip="[雙溪] 望星廣場" data-inverted="">
+                                    <div class="ui icon button" data-tooltip="<%= rentPlaceAL[i] %>"" data-inverted="">
                                         <i class="marker icon"></i>
                                     </div>
                                 </div>
                                 <div class="left floated meta" style="margin-left: 10px;">
-                                    <div class="ui icon button" data-tooltip="2017/11/30 上午10:00" data-inverted="">
+                                    <div class="ui icon button" data-tooltip="<%= rentDateAndTimeAL[i] %>" data-inverted="">
                                         <i class="wait icon"></i>
                                     </div>
                                 </div>
                                 <div class="right floated meta" style="margin-left: 10px;">
                                     <button class="ui green borrow button">借閱</button>
                                 </div>
-
                             </div>
                         </div>
                     </div>
+                    <% } %>           
 
                 </div>
             </div>

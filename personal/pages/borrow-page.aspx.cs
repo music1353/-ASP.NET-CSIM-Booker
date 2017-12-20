@@ -14,12 +14,17 @@ public partial class personal_pages_borror_page : System.Web.UI.Page {
     protected String userID;
     protected String name, avatar;
 
-    ArrayList teachingMaterialIDAL = new ArrayList();
-    ArrayList teachingMaterialNameAL = new ArrayList();
-    ArrayList publisherNameAL = new ArrayList();
-    ArrayList publisherAvatarAL = new ArrayList();
-    ArrayList materialPictureAL = new ArrayList();
-    ArrayList materialDescribeAL = new ArrayList();
+    protected ArrayList teachingMaterialIDAL = new ArrayList();
+    protected ArrayList teachingMaterialNameAL = new ArrayList();
+    protected ArrayList publisherIDAL = new ArrayList();
+    protected ArrayList publisherNameAL = new ArrayList();
+    protected ArrayList publisherAvatarAL = new ArrayList();
+    protected ArrayList publisherStarAL = new ArrayList();
+    protected ArrayList materialPictureAL = new ArrayList();
+    protected ArrayList materialDescribeAL = new ArrayList();
+    protected ArrayList rentPlaceAL = new ArrayList();
+    protected ArrayList rentDateAndTimeAL = new ArrayList();
+    protected Int16 allLength;
 
     protected void Page_Load(object sender, EventArgs e) {
 
@@ -49,27 +54,53 @@ public partial class personal_pages_borror_page : System.Web.UI.Page {
         // navbarsql end
 
         // allbooksql start
-        String allbooksql = "SELECT [TeachingMaterial].teachingMaterialID, [TeachingMaterial].teachingMaterialName, " +
-                            "[Member].studentName, [Member].Picture, [TeachingMaterial].MaterialPicture, [TeachingMaterial].MaterialDescribe " +
-                            "FROM [Member], [TeachingMaterial] " +
-                            "WHERE [Member].StudentID=[TeachingMaterial].PublisherID";
+        String allbooksql = "SELECT [TeachingMaterial].TeachingMaterialID, [TeachingMaterial].TeachingMaterialName, [Member].StudentID, " +
+                            "[Member].StudentName, [Member].Picture, [TeachingMaterial].MaterialPicture, [TeachingMaterial].MaterialDescribe, " +
+                            "[Lease].RentPlace, [Lease].RentDate, [Lease].RentTime " +
+                            "FROM [Member], [TeachingMaterial], [Lease] " +
+                            "WHERE [Member].StudentID=[TeachingMaterial].PublisherID AND [Lease].TeachingMaterialID=[TeachingMaterial].TeachingMaterialID";
 
         SqlCommand allbookCmd = new SqlCommand(allbooksql, Conn);
 
         SqlDataReader allbookdr = allbookCmd.ExecuteReader();
 
         while (allbookdr.Read()) {
-            teachingMaterialIDAL.Add(allbookdr["teachingMaterialID"].ToString());
-            teachingMaterialNameAL.Add(allbookdr["teachingMaterialName"].ToString());
-            publisherNameAL.Add(allbookdr["studentName"].ToString());
-            publisherAvatarAL.Add(allbookdr["Picture"].ToString());
-            materialPictureAL.Add(allbookdr["MaterialPicture"].ToString());
+            teachingMaterialIDAL.Add(allbookdr["TeachingMaterialID"].ToString());
+            teachingMaterialNameAL.Add(allbookdr["TeachingMaterialName"].ToString());
+            publisherIDAL.Add(allbookdr["StudentID"].ToString());
+            publisherNameAL.Add(allbookdr["StudentName"].ToString());
+            publisherAvatarAL.Add("../"+allbookdr["Picture"].ToString());
+            materialPictureAL.Add("../../"+allbookdr["MaterialPicture"].ToString());
             materialDescribeAL.Add(allbookdr["MaterialDescribe"].ToString());
+            rentPlaceAL.Add(allbookdr["RentPlace"].ToString());
+            rentDateAndTimeAL.Add(allbookdr["RentDate"].ToString() + " " + allbookdr["RentTime"].ToString());
         }
+
+        allLength = Convert.ToInt16(teachingMaterialIDAL.Count);
 
         allbookCmd.Cancel();
         allbookdr.Close();
         // allbooksql end
+
+        // publisherstarsql start
+        foreach(String id in publisherIDAL) {
+            String starsql = "SELECT [Member].StudentName,ROUND(AVG([UserEvaluation].Grade),1) as AverageGrade " +
+                             "FROM [Member],[UserEvaluation] " +
+                             "WHERE [UserEvaluation]. EvaluatedStudentID=" + id + " AND [UserEvaluation].EvaluatedStudentID =[Member].StudentID " +
+                             "GROUP BY [Member].StudentName";
+            SqlCommand starCmd = new SqlCommand(starsql, Conn);
+            SqlDataReader stardr = starCmd.ExecuteReader();
+
+            while (stardr.Read()) {
+                publisherStarAL.Add(stardr["AverageGrade"].ToString());
+            }
+
+            // System.Diagnostics.Debug.Write(publisherStarAL.Count);
+
+            starCmd.Cancel();
+            stardr.Close();
+        }
+        // publisherstarsql end
 
         Conn.Close();
     }
