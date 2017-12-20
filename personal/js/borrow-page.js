@@ -41,7 +41,7 @@ $(function () {
                                 '<div class="right floated meta">' +
                                 item.Star + '<i class="yellow star icon"></i>' +
                                 '</div>' +
-                                '<div class="header">' + item.BookName + '</div>' +
+                                '<div class="header ellipsis">' + item.BookName + '</div>' +
                                 '<div class="description">' +
                                 item.BookDescription +
                                 '</div>' +
@@ -160,7 +160,7 @@ $(function () {
                             '<div class="right floated meta">' +
                             item.Star + '<i class="yellow star icon"></i>' +
                             '</div>' +
-                            '<div class="header">' + item.BookName + '</div>' +
+                            '<div class="header ellipsis">' + item.BookName + '</div>' +
                             '<div class="description">' +
                             item.BookDescription +
                             '</div>' +

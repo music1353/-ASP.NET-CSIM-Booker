@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link rel="stylesheet" href="../css/ellipsis.css"/>
     <link rel="stylesheet" href="../css/basic.css">
     <link rel="stylesheet" href="../css/set-fonts.css">
     <link rel="stylesheet" href="../css/borrow-page-style.css">
@@ -79,7 +80,7 @@
                                 <div class="right floated meta">
                                     4.2<i class="yellow star icon"></i>
                                 </div>
-                                <div class="header">微積分筆記</div>
+                                <div class="header ellipsis">微積分筆記</div>
                                 <div class="description">
                                     我做的超認真的呦！!
                                 </div>
@@ -101,114 +102,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- card2 -->
-                    <div class="column">
-                        <div class="ui card">
-                            <div class="content">
-                                <img class="ui avatar image" src="../images/avatar-img/boy-1.png"> 阿冠
-                            </div>
-                            <div class="image">
-                                <img src="../images/temp-books-img/temp-java.jpg">
-                            </div>
-                            <div class="content">
-                                <div class="right floated meta">
-                                    3.3<i class="yellow star icon"></i>
-                                </div>
-                                <div class="header">JAVA程式設計</div>
-                                <div class="description">
-                                    跟新的一樣zz
-                                </div>
-                            </div>
-                            <div class="extra content">
-                                <div class="left floated meta">
-                                    <div class="ui icon button" data-tooltip="[城中] 學校正門" data-inverted="">
-                                        <i class="marker icon"></i>
-                                    </div>
-                                </div>
-                                <div class="left floated meta" style="margin-left: 10px;">
-                                    <div class="ui icon button" data-tooltip="2017/10/03 上午12:00" data-inverted="">
-                                        <i class="wait icon"></i>
-                                    </div>
-                                </div>
-                                <div class="right floated meta" style="margin-left: 10px;">
-                                    <button class="ui green borrow button">借閱</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- card3 -->
-                    <div class="column">
-                        <div class="ui card">
-                            <div class="content">
-                                <img class="ui avatar image" src="../images/avatar-img/girl-2.png"> 琪琪
-                            </div>
-                            <div class="image">
-                                <img src="../images/temp-books-img/temp-algo.jpg">
-                            </div>
-                            <div class="content">
-                                <div class="right floated meta">
-                                    4.1<i class="yellow star icon"></i>
-                                </div>
-                                <div class="header">演算法</div>
-                                <div class="description">
-                                    有很多筆記喔
-                                </div>
-                            </div>
-                            <div class="extra content">
-                                <div class="left floated meta">
-                                    <div class="ui icon button" data-tooltip="[城中] 學校正門" data-inverted="">
-                                        <i class="marker icon"></i>
-                                    </div>
-                                </div>
-                                <div class="left floated meta" style="margin-left: 10px;">
-                                    <div class="ui icon button" data-tooltip="2017/10/08 下午01:00" data-inverted="">
-                                        <i class="wait icon"></i>
-                                    </div>
-                                </div>
-                                <div class="right floated meta" style="margin-left: 10px;">
-                                    <button class="ui green borrow button">借閱</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- card4 -->
-                    <div class="four wide column">
-                        <div class="ui card">
-                            <div class="content">
-                                <img class="ui avatar image" src="../images/avatar-img/boy-2.png"> 鳴人
-                            </div>
-                            <div class="image">
-                                <img src="../images/temp-books-img/temp-acc.jpg">
-                            </div>
-                            <div class="content">
-                                <div class="right floated meta">
-                                    3.2<i class="yellow star icon"></i>
-                                </div>
-                                <div class="header">會計學</div>
-                                <div class="description">
-                                    我覺得很可以
-                                </div>
-                            </div>
-                            <div class="extra content">
-                                <div class="left floated meta">
-                                    <div class="ui icon button" data-tooltip="[雙溪] Ｄ棟一樓" data-inverted="">
-                                        <i class="marker icon"></i>
-                                    </div>
-                                </div>
-                                <div class="left floated meta" style="margin-left: 10px;">
-                                    <div class="ui icon button" data-tooltip="2017/10/03 上午12:00" data-inverted="">
-                                        <i class="wait icon"></i>
-                                    </div>
-                                </div>
-                                <div class="right floated meta" style="margin-left: 10px;">
-                                    <button class="ui green borrow button">借閱</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+ 
                 </div>
             </div>
         </div>
