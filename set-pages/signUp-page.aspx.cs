@@ -1,31 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class set_pages_signUp_page : System.Web.UI.Page
-{
-    protected void Page_Load(object sender, EventArgs e)
-    {
+public partial class set_pages_signUp_page : System.Web.UI.Page {
 
-        if (IsPostBack)
-        {
+    SqlConnection Conn = new SqlConnection("Data Source=163.14.73.8;Initial Catalog = DB05; User Id = DB05; Password=DB05");
+
+    protected String drAccount;
+
+    protected void Page_Load(object sender, EventArgs e) {
+
+
+        if (IsPostBack) {
             // 註冊表單
             String account = Request.Form["account"];
             String password = Request.Form["password"];
             String confirmPassword = Request.Form["confirmPassword"];
             String name = Request.Form["name"];
+            String avatar = Request.Form["avatar"];
+
+            Conn.Open();
+
+            String isexistsql = "SELECT [Member].StudentID " +
+                                "FROM [Member] " +
+                                "WHERE [Member].StudentID='" + account + "'";
+
+            SqlCommand isexistCmd = new SqlCommand(isexistsql, Conn);
+            SqlDataReader isexistdr = isexistCmd.ExecuteReader();
+
+            while (isexistdr.Read()) {
+                drAccount = isexistdr["StudentName"].ToString();
+            }
+
+            isexistCmd.Cancel();
+            isexistdr.Close();
+
+            if (drAccount != null) {
+                Response.Write("<script language=javascript>alert('註冊失敗，已有此帳號!');</script>");
+            } else {
+                String signupsql = "INSERT INTO MEMBER(StudentID,StudentName,[Password],Picture) " +
+                                   "VALUES('" + account + "','" + name + "','" + password + "','images/avatar-img/" + avatar + ".png')";
+
+                SqlCommand signupCmd = new SqlCommand(signupsql, Conn);
+                signupCmd.ExecuteReader();
+
+                signupCmd.Cancel();
+
+                Response.Write("<script language=javascript>alert('註冊成功!'); window.location.href='../index.aspx'</script>");
+            }
+
+            Conn.Close();
 
             // Output
             System.Diagnostics.Debug.WriteLine(account);
             System.Diagnostics.Debug.WriteLine(password);
             System.Diagnostics.Debug.WriteLine(confirmPassword);
             System.Diagnostics.Debug.WriteLine(name);
+            System.Diagnostics.Debug.WriteLine(avatar);
         }
-        
-
 
     }
 }

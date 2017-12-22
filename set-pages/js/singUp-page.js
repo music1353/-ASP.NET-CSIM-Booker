@@ -8,46 +8,53 @@ $(function () {
             if (val == 'male') {
                 $('#choose-img-fields').html(
                     '<div class="four wide field wow rubberBand">' +
-                    '<input type="radio" id="cb1" name="chooseImg">' +
-                    '<label for="cb1"><img src="images/avatar-img/boy-1.png"></label>' +
+                        '<input class="chooseAvatar" type="radio" id="cb1" name="chooseImg" value="boy-1">' +
+                        '<label for="cb1"><img src="images/avatar-img/boy-1.png"></label>' +
                     '</div>' +
                     '<div class="four wide field wow rubberBand">' +
-                    '<input type="radio" id="cb2" name="chooseImg">' +
-                    '<label for="cb2"><img src="images/avatar-img/boy-2.png"></label>' +
+                        '<input class="chooseAvatar" type="radio" id="cb2" name="chooseImg" value="boy-2">' +
+                        '<label for="cb2"><img src="images/avatar-img/boy-2.png"></label>' +
                     '</div>' +
                     '<div class="four wide field wow rubberBand">' +
-                    '<input type="radio" id="cb3" name="chooseImg">' +
-                    '<label for="cb3"><img src="images/avatar-img/boy-3.png"></label>' +
+                        '<input class="chooseAvatar" type="radio" id="cb3" name="chooseImg" value="boy-3">' +
+                        '<label for="cb3"><img src="images/avatar-img/boy-3.png"></label>' +
                     '</div>' +
                     '<div class="four wide field wow rubberBand">' +
-                    '<input type="radio" id="cb4" name="chooseImg">' +
-                    '<label for="cb4"><img src="images/avatar-img/boy-4.png"></label>' +
+                        '<input class="chooseAvatar" type="radio" id="cb4" name="chooseImg" value="boy-4">' +
+                        '<label for="cb4"><img src="images/avatar-img/boy-4.png"></label>' +
                     '</div>'
                 );
             } else if (val == 'female') {
                 $('#choose-img-fields').html(
                     '<div class="four wide field wow rubberBand">' +
-                    '<input type="radio" id="cb1" name="chooseImg">' +
-                    '<label for="cb1"><img src="images/avatar-img/girl-1.png"></label>' +
+                        '<input class="chooseAvatar" type="radio" id="cb1" name="chooseImg" value="girl-1">' +
+                        '<label for="cb1"><img src="images/avatar-img/girl-1.png"></label>' +
+                    '</div>' +
+                    '<div class="chooseAvatar" class="four wide field wow rubberBand">' +
+                        '<input class="chooseAvatar" type="radio" id="cb2" name="chooseImg" value="girl-2">' +
+                        '<label for="cb2"><img src="images/avatar-img/girl-2.png"></label>' +
                     '</div>' +
                     '<div class="four wide field wow rubberBand">' +
-                    '<input type="radio" id="cb2" name="chooseImg">' +
-                    '<label for="cb2"><img src="images/avatar-img/girl-2.png"></label>' +
+                        '<input class="chooseAvatar" type="radio" id="cb3" name="chooseImg" value="girl-3">' +
+                        '<label for="cb3"><img src="images/avatar-img/girl-3.png"></label>' +
                     '</div>' +
                     '<div class="four wide field wow rubberBand">' +
-                    '<input type="radio" id="cb3" name="chooseImg">' +
-                    '<label for="cb3"><img src="images/avatar-img/girl-3.png"></label>' +
-                    '</div>' +
-                    '<div class="four wide field wow rubberBand">' +
-                    '<input type="radio" id="cb4" name="chooseImg">' +
-                    '<label for="cb4"><img src="images/avatar-img/girl-4.png"></label>' +
+                        '<input class="chooseAvatar" type="radio" id="cb4" name="chooseImg" value="girl-4">' +
+                        '<label for="cb4"><img src="images/avatar-img/girl-4.png"></label>' +
                     '</div>'
                 );
             }
+
+            // (hidden input) avatar value
+            $('input.chooseAvatar').bind('click', function () {
+                var img = $(this).val();
+                $('#hiddenAvatar').val(img);
+                console.log($('#hiddenAvatar').val());
+            });
         }
     });
 
-    
+
     // ui.form
     $('.ui.form').form({
         fields: {
@@ -70,6 +77,14 @@ $(function () {
                 rules: [{
                     type: 'empty',
                     prompt: '請輸入您的學號'
+                }]
+            },
+            account: {
+                identifier: 'account',
+                rules: [{
+                    type: 'regExp',
+                    value: /\d{2}15\d{4}/,
+                    prompt: '請輸入正確的資管學號'
                 }]
             },
             password: {
@@ -95,12 +110,6 @@ $(function () {
             }
         }
     });
-
-    // TW telephone format
-    //    var cleave = new Cleave('.input-tel', {
-    //        phone: true,
-    //        phoneRegionCode: 'TW'
-    //    });
 
     // show and hide password
     var count1 = 0;

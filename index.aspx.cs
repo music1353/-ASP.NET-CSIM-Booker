@@ -18,13 +18,9 @@ public partial class index : System.Web.UI.Page {
         Conn.Open();
 
         if (IsPostBack) {
-            // 註冊表單
+            // 登入表單
             String loginAccount = Request.Form["loginAccount"];
             String loginPassword = Request.Form["loginPassword"];
-
-            // Output
-            // System.Diagnostics.Debug.WriteLine(loginAccount);
-            // System.Diagnostics.Debug.WriteLine(loginPassword);
 
             String sql = "SELECT [Member].StudentID, [Member].Password, [Member].Suspension, [Member].Permission " +
                          "FROM [Member] " +

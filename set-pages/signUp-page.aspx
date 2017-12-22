@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="signUp-page.aspx.cs" Inherits="set_pages_signUp_page" %>
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -29,7 +31,7 @@
     <nav id="navbar">
         <div class="ui top fixed borderless menu">
             <div class="ui container">
-                <a href="../index.html" class="header item">CSIM Booker</a>
+                <a href="../index.aspx" class="header item">CSIM Booker</a>
             </div>
         </div>
     </nav>
@@ -85,6 +87,7 @@
                             </div>
                             <h4 class="ui dividing header">選取一張大頭貼</h4>
                             <div class="ui fields" id="choose-img-fields"></div>
+                            <input type="hidden" id="hiddenAvatar" name="avatar" />
                             <input class="ui green button" type="submit" value="完成">
                             <div class="ui error message"></div>
                         </form>
