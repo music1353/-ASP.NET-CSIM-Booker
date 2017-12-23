@@ -55,6 +55,34 @@
     </nav>
     <!-- navbar end -->
 
+    <!-- table-example start -->
+    <section id="table-section">
+        <div class="ui container">
+            <table class="ui single line table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>借閱書籍</td>
+                        <td>您向阿冠借閱微積分課本成功！</td>
+                        <td>2017/11/5</td>
+                    </tr>
+                    <tr>
+                        <td>歸還書籍</td>
+                        <td>您向阿冠借閱的微積分課本已成功歸還！</td>
+                        <td>2017/11/8</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!-- table-example end -->
+
     <!-- footer start -->
     <footer>
         <h5>CSIM Booker &copy; 2017. All rights reserved</h5>

@@ -14,35 +14,6 @@
     border-right: solid 1px #eee;
 }
 
-/* message-section */
-#message-section h1 {
-    text-align: center;
-    margin-top: 35px;
-    margin-bottom: 35px;
-}
-
-#message-section .message{
-    border-top: solid 1px rgba(191, 191, 191, 0.42);
-    border-bottom: solid 1px rgba(191, 191, 191, 0.42);
-    line-height: 35px;
-    font-size: 18px;
-}
-
-#message-section .message .title{
-    display: inline-block;
-    float: left;
-    padding-right: 10vw;
-}
-
-#message-section .message .content{
-    display: inline-block;
-}
-
-#message-section .message .time{
-    display: inline-block;
-    float: right;
-}
-
 
 /* footer */
 

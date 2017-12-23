@@ -29,18 +29,28 @@
 
     <!-- message-section start -->
     <section id="message-section">
-        <div class="ui container segment">
-            <h1>通知訊息</h1>
-            <div class="message">
-                <div class="title">借閱書籍</div>
-                <div class="content">您向阿冠借閱微積分課本成功！</div>
-                <div class="time">2017/11/5</div>
-            </div>
-            <div class="message">
-                <div class="title">歸還書籍</div>
-                <div class="content">您向阿冠借閱的微積分課本已成功歸還！</div>
-                <div class="time">2017/11/8</div>
-            </div>
+        <div class="ui container">
+            <table class="ui single line table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>借閱書籍</td>
+                        <td>您向阿冠借閱微積分課本成功！</td>
+                        <td>2017/11/5</td>
+                    </tr>
+                    <tr>
+                        <td>歸還書籍</td>
+                        <td>您向阿冠借閱的微積分課本已成功歸還！</td>
+                        <td>2017/11/8</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
     <!-- history-section end -->
