@@ -33,39 +33,40 @@
                 <div class="ui grid">
                     <div class="four wide computer two wide mobile column"></div>
                     <div class="eight wide computer twelve wide mobile column">
-                        <form class="ui form" action="" method="">
+                        <form class="ui form" runat="server">
                             <div class="ui fields">
                                 <div class="eight wide field required">
                                     <label>姓名</label>
-                                    <input type="text" value="蘇靖軒" required>
+                                    <input type="text" name="newName" value="<%= pname %>"" required>
                                 </div>
                                 <div class="eight wide field">
                                     <label>學號(帳號)</label>
-                                    <input type="text" value="04156147" readonly>
+                                    <input type="text" value="<%= pID %>" readonly>
                                 </div>
                             </div>
                             <div class="sixteen wide field">
                                 <label>信箱</label>
-                                <input type="email" value="04156147@scu.edu.tw" readonly>
+                                <input type="email" value="<%= pEmail %>" readonly>
                             </div>
                             <div class="ten wide computer sixteen wide mobile field">
                                 <label>密碼</label>
                                 <div class="ui icon input" id="origin-password">
-                                    <input type="password" value="asda21421" readonly>
+                                    <input type="password" value="<%= pPassword %>" readonly>
                                     <i class="unhide link icon" id="passwordIcon"></i>
                                 </div>
                             </div>
                             <div class="ui fields">
                                 <div class="eight wide field">
                                     <label>更改密碼</label>
-                                    <input type="password" placeholder="請輸入新密碼">
+                                    <input type="password" name="newPassword" placeholder="請輸入新密碼">
                                 </div>
                                 <div class="eight wide field">
                                     <label>確認密碼</label>
-                                    <input type="password" placeholder="請確認新密碼">
+                                    <input type="password" name="comfirmNewPassword" placeholder="請確認新密碼">
                                 </div>
                             </div>
                             <input class="ui green button" type="submit" value="確認">
+                            <div class="ui error message"></div>
                         </form>
                     </div>
                 </div>

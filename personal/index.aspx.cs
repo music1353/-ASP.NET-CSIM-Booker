@@ -63,8 +63,13 @@ public partial class personal_Default : System.Web.UI.Page {
         SqlCommand starCmd = new SqlCommand(starsql, Conn);
         SqlDataReader stardr = starCmd.ExecuteReader();
 
-        while (stardr.Read()) {
-            star = stardr["AverageGrade"].ToString();
+        if (stardr.HasRows) {
+            while (stardr.Read()) {
+                star = stardr["AverageGrade"].ToString();
+            }
+        }
+        else {
+            star = "new";
         }
 
         starCmd.Cancel();
@@ -108,7 +113,7 @@ public partial class personal_Default : System.Web.UI.Page {
                             "[Member].StudentName, [Member].Picture, [TeachingMaterial].MaterialPicture, [TeachingMaterial].MaterialDescribe, " +
                             "[Lease].RentPlace, [Lease].RentDate, [Lease].RentTime " +
                             "FROM [Member], [TeachingMaterial], [Lease] " +
-                            "WHERE [Member].StudentID=[TeachingMaterial].PublisherID AND [Lease].TeachingMaterialID=[TeachingMaterial].TeachingMaterialID "+
+                            "WHERE [Member].StudentID=[TeachingMaterial].PublisherID AND [Lease].TeachingMaterialID=[TeachingMaterial].TeachingMaterialID AND [TeachingMaterial].RentalSituation='0' " +
                             "ORDER BY NEWID()";
 
         SqlCommand allbookCmd = new SqlCommand(allbooksql, Conn);
@@ -142,14 +147,22 @@ public partial class personal_Default : System.Web.UI.Page {
             SqlCommand publisherstarCmd = new SqlCommand(publisherstarsql, Conn);
             SqlDataReader publisherstardr = publisherstarCmd.ExecuteReader();
 
-            while (publisherstardr.Read()) {
-                publisherStarAL.Add(publisherstardr["AverageGrade"].ToString());
+            if (publisherstardr.HasRows) {
+                while (publisherstardr.Read()) {
+                    publisherStarAL.Add(publisherstardr["AverageGrade"].ToString());
+                }
+            }
+            else {
+                publisherStarAL.Add("new");
+                System.Diagnostics.Debug.Write("null");
             }
 
             publisherstarCmd.Cancel();
             publisherstardr.Close();
         }
         // publisherstarsql end
+
+        
 
         Conn.Close();
 

@@ -25,6 +25,7 @@ public partial class set_pages_signUp_page : System.Web.UI.Page {
 
             Conn.Open();
 
+            // isexistsql start
             String isexistsql = "SELECT [Member].StudentID " +
                                 "FROM [Member] " +
                                 "WHERE [Member].StudentID='" + account + "'";
@@ -38,10 +39,12 @@ public partial class set_pages_signUp_page : System.Web.UI.Page {
 
             isexistCmd.Cancel();
             isexistdr.Close();
+            // isexistsql end
 
             if (drAccount != null) {
                 Response.Write("<script language=javascript>alert('註冊失敗，已有此帳號!');</script>");
             } else {
+                // signupsql start
                 String signupsql = "INSERT INTO MEMBER(StudentID,StudentName,[Password],Picture) " +
                                    "VALUES('" + account + "','" + name + "','" + password + "','images/avatar-img/" + avatar + ".png')";
 
@@ -49,18 +52,13 @@ public partial class set_pages_signUp_page : System.Web.UI.Page {
                 signupCmd.ExecuteReader();
 
                 signupCmd.Cancel();
+                // signupsql end
 
                 Response.Write("<script language=javascript>alert('註冊成功!'); window.location.href='../index.aspx'</script>");
             }
 
             Conn.Close();
 
-            // Output
-            System.Diagnostics.Debug.WriteLine(account);
-            System.Diagnostics.Debug.WriteLine(password);
-            System.Diagnostics.Debug.WriteLine(confirmPassword);
-            System.Diagnostics.Debug.WriteLine(name);
-            System.Diagnostics.Debug.WriteLine(avatar);
         }
 
     }

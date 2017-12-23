@@ -24,6 +24,7 @@ public partial class personal_pages_borror_page : System.Web.UI.Page {
     protected ArrayList materialDescribeAL = new ArrayList();
     protected ArrayList rentPlaceAL = new ArrayList();
     protected ArrayList rentDateAndTimeAL = new ArrayList();
+    protected ArrayList rentalSituationAL = new ArrayList();
     protected Int16 allLength;
 
     protected void Page_Load(object sender, EventArgs e) {
@@ -31,7 +32,8 @@ public partial class personal_pages_borror_page : System.Web.UI.Page {
         if (Session["isLogin"] == "Y") {
             userID = Session["userID"].ToString();
             Conn.Open();
-        } else {
+        }
+        else {
             Response.Redirect("../index.aspx");
         }
 
@@ -56,7 +58,7 @@ public partial class personal_pages_borror_page : System.Web.UI.Page {
         // allbooksql start
         String allbooksql = "SELECT [TeachingMaterial].TeachingMaterialID, [TeachingMaterial].TeachingMaterialName, [Member].StudentID, " +
                             "[Member].StudentName, [Member].Picture, [TeachingMaterial].MaterialPicture, [TeachingMaterial].MaterialDescribe, " +
-                            "[Lease].RentPlace, [Lease].RentDate, [Lease].RentTime " +
+                            "[TeachingMaterial].RentalSituation, [Lease].RentPlace, [Lease].RentDate, [Lease].RentTime " +
                             "FROM [Member], [TeachingMaterial], [Lease] " +
                             "WHERE [Member].StudentID=[TeachingMaterial].PublisherID AND [Lease].TeachingMaterialID=[TeachingMaterial].TeachingMaterialID";
 
@@ -65,15 +67,19 @@ public partial class personal_pages_borror_page : System.Web.UI.Page {
         SqlDataReader allbookdr = allbookCmd.ExecuteReader();
 
         while (allbookdr.Read()) {
-            teachingMaterialIDAL.Add(allbookdr["TeachingMaterialID"].ToString());
-            teachingMaterialNameAL.Add(allbookdr["TeachingMaterialName"].ToString());
-            publisherIDAL.Add(allbookdr["StudentID"].ToString());
-            publisherNameAL.Add(allbookdr["StudentName"].ToString());
-            publisherAvatarAL.Add("../"+allbookdr["Picture"].ToString());
-            materialPictureAL.Add("../../"+allbookdr["MaterialPicture"].ToString());
-            materialDescribeAL.Add(allbookdr["MaterialDescribe"].ToString());
-            rentPlaceAL.Add(allbookdr["RentPlace"].ToString());
-            rentDateAndTimeAL.Add(allbookdr["RentDate"].ToString() + " " + allbookdr["RentTime"].ToString());
+            String rentalSituation = allbookdr["RentalSituation"].ToString();
+
+            if (rentalSituation == "0") {
+                teachingMaterialIDAL.Add(allbookdr["TeachingMaterialID"].ToString());
+                teachingMaterialNameAL.Add(allbookdr["TeachingMaterialName"].ToString());
+                publisherIDAL.Add(allbookdr["StudentID"].ToString());
+                publisherNameAL.Add(allbookdr["StudentName"].ToString());
+                publisherAvatarAL.Add("../" + allbookdr["Picture"].ToString());
+                materialPictureAL.Add("../../" + allbookdr["MaterialPicture"].ToString());
+                materialDescribeAL.Add(allbookdr["MaterialDescribe"].ToString());
+                rentPlaceAL.Add(allbookdr["RentPlace"].ToString());
+                rentDateAndTimeAL.Add(allbookdr["RentDate"].ToString() + " " + allbookdr["RentTime"].ToString());
+            }
         }
 
         allLength = Convert.ToInt16(teachingMaterialIDAL.Count);
@@ -83,7 +89,7 @@ public partial class personal_pages_borror_page : System.Web.UI.Page {
         // allbooksql end
 
         // publisherstarsql start
-        foreach(String id in publisherIDAL) {
+        foreach (String id in publisherIDAL) {
             String starsql = "SELECT [Member].StudentName,ROUND(AVG([UserEvaluation].Grade),1) as AverageGrade " +
                              "FROM [Member],[UserEvaluation] " +
                              "WHERE [UserEvaluation]. EvaluatedStudentID=" + id + " AND [UserEvaluation].EvaluatedStudentID =[Member].StudentID " +
@@ -91,8 +97,13 @@ public partial class personal_pages_borror_page : System.Web.UI.Page {
             SqlCommand starCmd = new SqlCommand(starsql, Conn);
             SqlDataReader stardr = starCmd.ExecuteReader();
 
-            while (stardr.Read()) {
-                publisherStarAL.Add(stardr["AverageGrade"].ToString());
+            if( stardr.HasRows) {
+                while (stardr.Read()) {
+                    publisherStarAL.Add(stardr["AverageGrade"].ToString());
+                }
+            } else {
+                publisherStarAL.Add("new");
+                System.Diagnostics.Debug.Write("null");
             }
 
             // System.Diagnostics.Debug.Write(publisherStarAL.Count);

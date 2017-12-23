@@ -13,12 +13,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css">
     <link rel="stylesheet" href="../css/basic.css">
     <link rel="stylesheet" href="../css/set-fonts.css">
     <link rel="stylesheet" href="../css/post-page-style.css">
     <link rel="stylesheet" href="../css/rwd-navbar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/post-page.js"></script>
 </head>
@@ -80,11 +82,22 @@
                             <div class="ui fields">
                                 <div class="five wide field">
                                     <label>日期</label>
-                                    <input type="date" name="changeDate">
+                                    <div class="ui calendar" id="changeDateCalendar">
+                                        <div class="ui input left icon">
+                                            <i class="calendar icon"></i>
+                                            <input type="text" placeholder="Date" name="changeDate">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="five wide field">
                                     <label>時間</label>
-                                    <input type="time" name="changeTime">
+                                    <div class="ui calendar" id="changeTimeCalendar">
+                                        <div class="ui input left icon">
+                                            <i class="time icon"></i>
+                                            <input type="text" placeholder="Time" name="changeTime"> 
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="hChangeTime" name="hChangeTime">
                                 </div>
                                 <div class="six wide field">
                                     <label>地點</label>
@@ -105,11 +118,22 @@
                             <div class="ui fields">
                                 <div class="five wide field">
                                     <label>日期</label>
-                                    <input type="date" name="returnDate">
+                                    <div class="ui calendar" id="returnDateCalendar">
+                                        <div class="ui input left icon">
+                                            <i class="calendar icon"></i>
+                                            <input type="text" placeholder="Date" name="returnDate">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="five wide field">
                                     <label>時間</label>
-                                    <input type="time" name="returnTime">
+                                    <div class="ui calendar" id="returnTimeCalendar">
+                                        <div class="ui input left icon">
+                                            <i class="time icon"></i>
+                                            <input type="text" placeholder="Time" name="returnTime">
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="hReturnTime" name="hReturnTime">
                                 </div>
                                 <div class="six wide field">
                                     <label>地點</label>

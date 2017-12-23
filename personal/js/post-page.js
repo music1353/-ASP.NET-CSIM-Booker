@@ -144,4 +144,81 @@ $(function () {
         }
     });
 
+    // ui calendar
+    $('#changeDateCalendar').calendar({
+        type: 'date',
+        formatter: {
+            date: function (date, settings) {
+                if (!date) return '';
+                var day = date.getDate();
+                var month = date.getMonth() + 1;
+                var year = date.getFullYear();
+                return year + '/' + month + '/' + day;
+            }
+        }
+    });
+
+    $('#changeTimeCalendar').calendar({
+        type: 'time',
+        onChange: function (date, text, mode) {
+            var oritime = text + '';
+            var cutTime = oritime.split(' ');
+            var time = cutTime[0];
+            var MM = cutTime[1];
+
+            var splitTime = time.split(':');
+            var hour = splitTime[0];
+            var min = splitTime[1];
+
+            if (MM == 'PM') {
+                var fixhour = parseInt(hour) + 12;
+                var resultTime = fixhour + ":" + min;
+            } else {
+                var resultTime = hour + ":" + min;
+            }
+
+            console.log(resultTime);
+            $('#hChangeTime').val(resultTime);
+            console.log($('#hChangeTime').val());
+        }
+    });
+
+    $('#returnDateCalendar').calendar({
+        type: 'date',
+        formatter: {
+            date: function (date, settings) {
+                if (!date) return '';
+                var day = date.getDate();
+                var month = date.getMonth() + 1;
+                var year = date.getFullYear();
+                return year + '/' + month + '/' + day;
+            }
+        }
+    });
+
+    $('#returnTimeCalendar').calendar({
+        type: 'time',
+        onChange: function (date, text, mode) {
+            var oritime = text + '';
+            var cutTime = oritime.split(' ');
+            var time = cutTime[0];
+            var MM = cutTime[1];
+
+            var splitTime = time.split(':');
+            var hour = splitTime[0];
+            var min = splitTime[1];
+
+            if (MM == 'PM') {
+                var fixhour = parseInt(hour) + 12;
+                var resultTime = fixhour + ":" + min;
+            } else {
+                var resultTime = hour + ":" + min;
+            }
+
+            console.log(resultTime);
+            $('#hReturnTime').val(resultTime);
+            console.log($('#hReturnTime').val());
+        }
+    });
+
 });
