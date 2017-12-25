@@ -33,40 +33,23 @@
             <table class="ui selectable celled table">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Title</th>
-                        <th>Content</th>
-                        <th>Time</th>
+                        <th>標題</th>
+                        <th>內容</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="collapsing">
-                            <div class="ui checkbox">
-                                <input type="checkbox" name="example">
-                                <label></label>
-                            </div>
-                        </td>
-                        <td>借閱書籍</td>
-                        <td>您向阿冠借閱微積分課本成功！</td>
-                        <td>2017/11/5</td>
+                    <% for (int i = 0; i < length; i++) { %>
+                    <tr id="<%= letterIDAL[i] %>">
+                        <td><%= letterTitleAL[i] %></td>
+                        <td><%= letterContentAL[i] %></td>
                     </tr>
-                    <tr>
-                        <td class="collapsing">
-                            <div class="ui checkbox">
-                                <input type="checkbox" name="example">
-                                <label></label>
-                            </div>
-                        </td>
-                        <td>歸還書籍</td>
-                        <td>您向阿冠借閱的微積分課本已成功歸還！</td>
-                        <td>2017/11/8</td>
-                    </tr>
+                    <% } %>
                 </tbody>
             </table>
         </div>
     </section>
     <!-- history-section end -->
+
 
     <!-- #include file="templates/footer.html" -->
 </body>

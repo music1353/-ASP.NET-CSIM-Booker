@@ -7,16 +7,14 @@ using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class personal_pages_ajax_revert_book_ajax : System.Web.UI.Page
-{
+public partial class personal_pages_ajax_revert_book_ajax : System.Web.UI.Page {
 
     SqlConnection Conn = new SqlConnection("Data Source=163.14.73.8;Initial Catalog = DB05; User Id = DB05; Password=DB05");
 
     protected String userID, bookID, grade, content;
     protected String publisherID, nextUEvaID, nextLetterID;
 
-    protected void Page_Load(object sender, EventArgs e)
-    {
+    protected void Page_Load(object sender, EventArgs e) {
         Conn.Open();
 
         userID = Session["userID"].ToString();
@@ -56,7 +54,7 @@ public partial class personal_pages_ajax_revert_book_ajax : System.Web.UI.Page
         // findmaxLetterIDsql end
 
         String insertLettersql = "INSERT INTO Letter " +
-                                 "VALUES('"+nextLetterID+"','您的書已被租借者完成評價','"+publisherID+"', '0')";
+                                 "VALUES('" + nextLetterID + "', '借借者已將書籍歸還', '您的書已被租借者完成評價','" + publisherID + "', '0')";
         SqlCommand insertLetterCmd = new SqlCommand(insertLettersql, Conn);
         SqlDataReader insertLetterdr = insertLetterCmd.ExecuteReader();
         insertLetterCmd.Cancel();
@@ -92,7 +90,7 @@ public partial class personal_pages_ajax_revert_book_ajax : System.Web.UI.Page
 
         // insertEvasql start
         String insertEvasql = "INSERT INTO UserEvaluation " +
-                              "VALUES('"+nextUEvaID+"','"+grade+"','"+content+"','"+publisherID+"', '"+nextLetterID+"')";
+                              "VALUES('" + nextUEvaID + "','" + grade + "','" + content + "','" + publisherID + "', '" + nextLetterID + "')";
         SqlCommand insertEvaCmd = new SqlCommand(insertEvasql, Conn);
         SqlDataReader insertEvadr = insertEvaCmd.ExecuteReader();
         insertEvaCmd.Cancel();
