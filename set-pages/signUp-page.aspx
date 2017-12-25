@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
     <link rel="stylesheet" href="css/basic.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/set-fonts.css">
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="css/signUp-page-style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
     <script src="js/wow/wow.min.js"></script>
     <script src="js/cleavejs/cleave.min.js"></script>
     <script src="js/cleavejs/cleave-phone.tw.js"></script>
@@ -27,6 +29,27 @@
 </head>
 
 <body>
+    <script>
+        function errorSameAccount() {
+            $.alert({
+                useBootstrap: false,
+                title: '錯誤',
+                content: '此帳號已被申請!',
+            });
+        }
+        function complete() {
+            $.confirm({
+                useBootstrap: false,
+                title: '成功',
+                content: '註冊成功!',
+                buttons: {
+                    OK: function () {
+                        window.location.href = '../index.aspx';
+                    }
+                }
+            });
+        }
+    </script>
     <!-- navbar start -->
     <nav id="navbar">
         <div class="ui top fixed borderless menu">

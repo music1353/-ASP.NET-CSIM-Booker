@@ -58,28 +58,25 @@ public partial class personal_pages_borror_page : System.Web.UI.Page {
         // allbooksql start
         String allbooksql = "SELECT [TeachingMaterial].TeachingMaterialID, [TeachingMaterial].TeachingMaterialName, [Member].StudentID, " +
                             "[Member].StudentName, [Member].Picture, [TeachingMaterial].MaterialPicture, [TeachingMaterial].MaterialDescribe, " +
-                            "[TeachingMaterial].RentalSituation, [Lease].RentPlace, [Lease].RentDate, [Lease].RentTime " +
+                            "[Lease].RentPlace, [Lease].RentDate, [Lease].RentTime " +
                             "FROM [Member], [TeachingMaterial], [Lease] " +
-                            "WHERE [Member].StudentID=[TeachingMaterial].PublisherID AND [Lease].TeachingMaterialID=[TeachingMaterial].TeachingMaterialID";
+                            "WHERE [Member].StudentID=[TeachingMaterial].PublisherID AND [Lease].TeachingMaterialID=[TeachingMaterial].TeachingMaterialID " +
+                            "AND [TeachingMaterial].RentalSituation='0' AND [TeachingMaterial].publisherID!='" + userID + "' ";
 
         SqlCommand allbookCmd = new SqlCommand(allbooksql, Conn);
 
         SqlDataReader allbookdr = allbookCmd.ExecuteReader();
 
         while (allbookdr.Read()) {
-            String rentalSituation = allbookdr["RentalSituation"].ToString();
-
-            if (rentalSituation == "0") {
-                teachingMaterialIDAL.Add(allbookdr["TeachingMaterialID"].ToString());
-                teachingMaterialNameAL.Add(allbookdr["TeachingMaterialName"].ToString());
-                publisherIDAL.Add(allbookdr["StudentID"].ToString());
-                publisherNameAL.Add(allbookdr["StudentName"].ToString());
-                publisherAvatarAL.Add("../" + allbookdr["Picture"].ToString());
-                materialPictureAL.Add("../../" + allbookdr["MaterialPicture"].ToString());
-                materialDescribeAL.Add(allbookdr["MaterialDescribe"].ToString());
-                rentPlaceAL.Add(allbookdr["RentPlace"].ToString());
-                rentDateAndTimeAL.Add(allbookdr["RentDate"].ToString() + " " + allbookdr["RentTime"].ToString());
-            }
+            teachingMaterialIDAL.Add(allbookdr["TeachingMaterialID"].ToString());
+            teachingMaterialNameAL.Add(allbookdr["TeachingMaterialName"].ToString());
+            publisherIDAL.Add(allbookdr["StudentID"].ToString());
+            publisherNameAL.Add(allbookdr["StudentName"].ToString());
+            publisherAvatarAL.Add("../" + allbookdr["Picture"].ToString());
+            materialPictureAL.Add("../../" + allbookdr["MaterialPicture"].ToString());
+            materialDescribeAL.Add(allbookdr["MaterialDescribe"].ToString());
+            rentPlaceAL.Add(allbookdr["RentPlace"].ToString());
+            rentDateAndTimeAL.Add(allbookdr["RentDate"].ToString() + " " + allbookdr["RentTime"].ToString());
         }
 
         allLength = Convert.ToInt16(teachingMaterialIDAL.Count);
@@ -97,11 +94,12 @@ public partial class personal_pages_borror_page : System.Web.UI.Page {
             SqlCommand starCmd = new SqlCommand(starsql, Conn);
             SqlDataReader stardr = starCmd.ExecuteReader();
 
-            if( stardr.HasRows) {
+            if (stardr.HasRows) {
                 while (stardr.Read()) {
                     publisherStarAL.Add(stardr["AverageGrade"].ToString());
                 }
-            } else {
+            }
+            else {
                 publisherStarAL.Add("new");
                 System.Diagnostics.Debug.Write("null");
             }

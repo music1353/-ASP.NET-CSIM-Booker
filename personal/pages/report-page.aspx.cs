@@ -39,14 +39,28 @@ public partial class personal_pages_report_page : System.Web.UI.Page
         navbarCmd.Cancel();
         navbardr.Close();
         // navbarsql end
-
-        Conn.Close();
+        
 
         if (IsPostBack)
         {
+            String reportID = Request.Form["reportID"];
             String reportReason = Request.Form["reportReasonTextarea"];
 
-            System.Diagnostics.Debug.WriteLine(reportReason);
+            // reportsql start
+            String reportsql = "INSERT INTO ReportReason " +
+                               "VALUES('" + reportReason + "','" + reportID + "') ";
+
+            SqlCommand reportsqlCmd = new SqlCommand(reportsql, Conn);
+            reportsqlCmd.ExecuteReader();
+
+            reportsqlCmd.Cancel();
+            // reportsqlCmd.ExecuteReader().Close();
+            // reportsql end
+
+            // alert
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "complete();", true);
         }
+
+        Conn.Close();
     }
 }

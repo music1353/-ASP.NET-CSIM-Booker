@@ -34,7 +34,7 @@ public partial class set_pages_signUp_page : System.Web.UI.Page {
             SqlDataReader isexistdr = isexistCmd.ExecuteReader();
 
             while (isexistdr.Read()) {
-                drAccount = isexistdr["StudentName"].ToString();
+                drAccount = isexistdr["StudentID"].ToString();
             }
 
             isexistCmd.Cancel();
@@ -42,7 +42,7 @@ public partial class set_pages_signUp_page : System.Web.UI.Page {
             // isexistsql end
 
             if (drAccount != null) {
-                Response.Write("<script language=javascript>alert('註冊失敗，已有此帳號!');</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "errorSameAccount();", true);
             } else {
                 // signupsql start
                 String signupsql = "INSERT INTO MEMBER(StudentID,StudentName,[Password],Picture) " +
@@ -54,7 +54,7 @@ public partial class set_pages_signUp_page : System.Web.UI.Page {
                 signupCmd.Cancel();
                 // signupsql end
 
-                Response.Write("<script language=javascript>alert('註冊成功!'); window.location.href='../index.aspx'</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "complete();", true);
             }
 
             Conn.Close();

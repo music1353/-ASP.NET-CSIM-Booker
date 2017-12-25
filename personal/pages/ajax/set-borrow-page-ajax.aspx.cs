@@ -13,6 +13,7 @@ public partial class personal_pages_borrow_ajax : System.Web.UI.Page {
 
     SqlConnection Conn = new SqlConnection("Data Source=163.14.73.8;Initial Catalog = DB05; User Id = DB05; Password=DB05");
 
+    protected String userID;
     protected ArrayList teachingMaterialIDAL = new ArrayList();
     protected ArrayList teachingMaterialNameAL = new ArrayList();
     protected ArrayList publisherIDAL = new ArrayList();
@@ -27,6 +28,8 @@ public partial class personal_pages_borrow_ajax : System.Web.UI.Page {
 
     protected void Page_Load(object sender, EventArgs e) {
 
+        userID = Session["userID"].ToString();
+
         String bookSubject = Request.Form["bookSubject"];
         String subject;
 
@@ -36,28 +39,25 @@ public partial class personal_pages_borrow_ajax : System.Web.UI.Page {
             // allbooksql start
             String allbooksql = "SELECT [TeachingMaterial].TeachingMaterialID, [TeachingMaterial].TeachingMaterialName, [Member].StudentID, " +
                                 "[Member].StudentName, [Member].Picture, [TeachingMaterial].MaterialPicture, [TeachingMaterial].MaterialDescribe, " +
-                                "[TeachingMaterial].RentalSituation, [Lease].RentPlace, [Lease].RentDate, [Lease].RentTime " +
+                                "[Lease].RentPlace, [Lease].RentDate, [Lease].RentTime " +
                                 "FROM [Member], [TeachingMaterial], [Lease] " +
-                                "WHERE [Member].StudentID=[TeachingMaterial].PublisherID AND [Lease].TeachingMaterialID=[TeachingMaterial].TeachingMaterialID";
+                                "WHERE [Member].StudentID=[TeachingMaterial].PublisherID AND [Lease].TeachingMaterialID=[TeachingMaterial].TeachingMaterialID " +
+                                "AND [TeachingMaterial].RentalSituation='0' AND [TeachingMaterial].publisherID!='" + userID + "' ";
 
             SqlCommand allbookCmd = new SqlCommand(allbooksql, Conn);
 
             SqlDataReader allbookdr = allbookCmd.ExecuteReader();
 
             while (allbookdr.Read()) {
-                String rentalSituation = allbookdr["RentalSituation"].ToString();
-
-                if (rentalSituation == "0") {
-                    teachingMaterialIDAL.Add(allbookdr["TeachingMaterialID"].ToString());
-                    teachingMaterialNameAL.Add(allbookdr["TeachingMaterialName"].ToString());
-                    publisherIDAL.Add(allbookdr["StudentID"].ToString());
-                    publisherNameAL.Add(allbookdr["StudentName"].ToString());
-                    publisherAvatarAL.Add("../" + allbookdr["Picture"].ToString());
-                    materialPictureAL.Add("../../" + allbookdr["MaterialPicture"].ToString());
-                    materialDescribeAL.Add(allbookdr["MaterialDescribe"].ToString());
-                    rentPlaceAL.Add(allbookdr["RentPlace"].ToString());
-                    rentDateAndTimeAL.Add(allbookdr["RentDate"].ToString() + " " + allbookdr["RentTime"].ToString());
-                }
+                teachingMaterialIDAL.Add(allbookdr["TeachingMaterialID"].ToString());
+                teachingMaterialNameAL.Add(allbookdr["TeachingMaterialName"].ToString());
+                publisherIDAL.Add(allbookdr["StudentID"].ToString());
+                publisherNameAL.Add(allbookdr["StudentName"].ToString());
+                publisherAvatarAL.Add("../" + allbookdr["Picture"].ToString());
+                materialPictureAL.Add("../../" + allbookdr["MaterialPicture"].ToString());
+                materialDescribeAL.Add(allbookdr["MaterialDescribe"].ToString());
+                rentPlaceAL.Add(allbookdr["RentPlace"].ToString());
+                rentDateAndTimeAL.Add(allbookdr["RentDate"].ToString() + " " + allbookdr["RentTime"].ToString());
             }
 
             allLength = Convert.ToInt16(teachingMaterialIDAL.Count);
@@ -96,10 +96,16 @@ public partial class personal_pages_borrow_ajax : System.Web.UI.Page {
             var responseEntities = new List<Book>();
             for (int i = 0; i < allLength; i++) {
                 Book book = new Book {
-                    Name = publisherNameAL[i].ToString(), Avatar = publisherAvatarAL[i].ToString(), ID = teachingMaterialIDAL[i].ToString(),
-                    Star = publisherStarAL[i].ToString(), BookName = teachingMaterialNameAL[i].ToString(),
-                    BookImage = materialPictureAL[i].ToString(), BookDescription = materialDescribeAL[i].ToString(),
-                    ChangeSite = rentPlaceAL[i].ToString(), ChangeTime = rentDateAndTimeAL[i].ToString()
+                    publisherID = publisherIDAL[i].ToString(),
+                    Name = publisherNameAL[i].ToString(),
+                    Avatar = publisherAvatarAL[i].ToString(),
+                    BookID = teachingMaterialIDAL[i].ToString(),
+                    Star = publisherStarAL[i].ToString(),
+                    BookName = teachingMaterialNameAL[i].ToString(),
+                    BookImage = materialPictureAL[i].ToString(),
+                    BookDescription = materialDescribeAL[i].ToString(),
+                    ChangeSite = rentPlaceAL[i].ToString(),
+                    ChangeTime = rentDateAndTimeAL[i].ToString()
                 };
                 responseEntities.Add(book);
             }
@@ -111,66 +117,86 @@ public partial class personal_pages_borrow_ajax : System.Web.UI.Page {
 
             Conn.Close();
 
-        } else {
+        }
+        else {
 
             if (bookSubject == "cal") {
                 subject = "微積分";
                 ajaxback(subject);
-            } else if (bookSubject == "fin-math") {
+            }
+            else if (bookSubject == "fin-math") {
                 subject = "管理數學";
                 ajaxback(subject);
-            } else if (bookSubject == "fin-management") {
+            }
+            else if (bookSubject == "fin-management") {
                 subject = "財務管理";
                 ajaxback(subject);
-            } else if (bookSubject == "dis-math") {
+            }
+            else if (bookSubject == "dis-math") {
                 subject = "離散數學";
                 ajaxback(subject);
-            } else if (bookSubject == "statistic") {
+            }
+            else if (bookSubject == "statistic") {
                 subject = "統計學";
                 ajaxback(subject);
-            } else if (bookSubject == "en") {
+            }
+            else if (bookSubject == "en") {
                 subject = "英文";
                 ajaxback(subject);
-            } else if (bookSubject == "ch") {
+            }
+            else if (bookSubject == "ch") {
                 subject = "國文";
                 ajaxback(subject);
-            } else if (bookSubject == "jp") {
+            }
+            else if (bookSubject == "jp") {
                 subject = "日文";
                 ajaxback(subject);
-            } else if (bookSubject == "java") {
+            }
+            else if (bookSubject == "java") {
                 subject = "JAVA程式設計";
                 ajaxback(subject);
-            } else if (bookSubject == "data-str") {
+            }
+            else if (bookSubject == "data-str") {
                 subject = "資料結構";
                 ajaxback(subject);
-            } else if (bookSubject == "algorithms") {
+            }
+            else if (bookSubject == "algorithms") {
                 subject = "演算法";
                 ajaxback(subject);
-            } else if (bookSubject == "app") {
+            }
+            else if (bookSubject == "app") {
                 subject = "行動平台程式設計";
                 ajaxback(subject);
-            } else if (bookSubject == "html") {
+            }
+            else if (bookSubject == "html") {
                 subject = "網際網路程式設計";
                 ajaxback(subject);
-            } else if (bookSubject == "management") {
+            }
+            else if (bookSubject == "management") {
                 subject = "管理學";
                 ajaxback(subject);
-            } else if (bookSubject == "management-sys") {
+            }
+            else if (bookSubject == "management-sys") {
                 subject = "資訊管理系統";
                 ajaxback(subject);
-            } else if (bookSubject == "database-management") {
+            }
+            else if (bookSubject == "database-management") {
                 subject = "資料庫管理";
                 ajaxback(subject);
-            } else if (bookSubject == "marketing") {
+            }
+            else if (bookSubject == "marketing") {
                 subject = "行銷學";
                 ajaxback(subject);
-            } else if (bookSubject == "accounting") {
+            }
+            else if (bookSubject == "accounting") {
                 subject = "會計學";
                 ajaxback(subject);
-            } else if (bookSubject == "computer-intro") {
+            }
+            else if (bookSubject == "computer-intro") {
                 subject = "計算機概論";
                 ajaxback(subject);
-            } else if (bookSubject == "cor-info") {
+            }
+            else if (bookSubject == "cor-info") {
                 subject = "企業資料通訊";
                 ajaxback(subject);
             }
@@ -182,30 +208,26 @@ public partial class personal_pages_borrow_ajax : System.Web.UI.Page {
         // sql start
         String sql = "SELECT [TeachingMaterial].TeachingMaterialID, [TeachingMaterial].TeachingMaterialName, [Member].StudentID, " +
                      "[Member].StudentName, [Member].Picture, [TeachingMaterial].MaterialPicture, [TeachingMaterial].MaterialDescribe, " +
-                     "[TeachingMaterial].RentalSituation, [Lease].RentPlace, [Lease].RentDate, [Lease].RentTime " +
+                     "[Lease].RentPlace, [Lease].RentDate, [Lease].RentTime " +
                      "FROM [Member], [TeachingMaterial], [Lease] " +
                      "WHERE [Member].StudentID=[TeachingMaterial].PublisherID AND [Lease].TeachingMaterialID=[TeachingMaterial].TeachingMaterialID " +
-                     "AND [TeachingMaterial].Subject=" + "'" + subject + "'";
+                     "AND [TeachingMaterial].Subject=" + "'" + subject + "' " +
+                     "AND [TeachingMaterial].RentalSituation='0' AND [TeachingMaterial].publisherID!='" + userID + "' ";
 
         SqlCommand Cmd = new SqlCommand(sql, Conn);
 
         SqlDataReader dr = Cmd.ExecuteReader();
 
         while (dr.Read()) {
-            String rentalSituation = dr["RentalSituation"].ToString();
-
-            if (rentalSituation == "0") {
-                teachingMaterialIDAL.Add(dr["TeachingMaterialID"].ToString());
-                teachingMaterialNameAL.Add(dr["TeachingMaterialName"].ToString());
-                publisherIDAL.Add(dr["StudentID"].ToString());
-                publisherNameAL.Add(dr["StudentName"].ToString());
-                publisherAvatarAL.Add("../" + dr["Picture"].ToString());
-                materialPictureAL.Add("../../" + dr["MaterialPicture"].ToString());
-                materialDescribeAL.Add(dr["MaterialDescribe"].ToString());
-                rentPlaceAL.Add(dr["RentPlace"].ToString());
-                rentDateAndTimeAL.Add(dr["RentDate"].ToString() + " " + dr["RentTime"].ToString());
-            }
-
+            teachingMaterialIDAL.Add(dr["TeachingMaterialID"].ToString());
+            teachingMaterialNameAL.Add(dr["TeachingMaterialName"].ToString());
+            publisherIDAL.Add(dr["StudentID"].ToString());
+            publisherNameAL.Add(dr["StudentName"].ToString());
+            publisherAvatarAL.Add("../" + dr["Picture"].ToString());
+            materialPictureAL.Add("../../" + dr["MaterialPicture"].ToString());
+            materialDescribeAL.Add(dr["MaterialDescribe"].ToString());
+            rentPlaceAL.Add(dr["RentPlace"].ToString());
+            rentDateAndTimeAL.Add(dr["RentDate"].ToString() + " " + dr["RentTime"].ToString());
         }
 
         allLength = Convert.ToInt16(teachingMaterialIDAL.Count);
@@ -244,10 +266,16 @@ public partial class personal_pages_borrow_ajax : System.Web.UI.Page {
         var responseEntities = new List<Book>();
         for (int i = 0; i < allLength; i++) {
             Book book = new Book {
-                Name = publisherNameAL[i].ToString(), Avatar = publisherAvatarAL[i].ToString(), ID = teachingMaterialIDAL[i].ToString(),
-                Star = publisherStarAL[i].ToString(), BookName = teachingMaterialNameAL[i].ToString(),
-                BookImage = materialPictureAL[i].ToString(), BookDescription = materialDescribeAL[i].ToString(),
-                ChangeSite = rentPlaceAL[i].ToString(), ChangeTime = rentDateAndTimeAL[i].ToString()
+                publisherID = publisherIDAL[i].ToString(),
+                Name = publisherNameAL[i].ToString(),
+                Avatar = publisherAvatarAL[i].ToString(),
+                BookID = teachingMaterialIDAL[i].ToString(),
+                Star = publisherStarAL[i].ToString(),
+                BookName = teachingMaterialNameAL[i].ToString(),
+                BookImage = materialPictureAL[i].ToString(),
+                BookDescription = materialDescribeAL[i].ToString(),
+                ChangeSite = rentPlaceAL[i].ToString(),
+                ChangeTime = rentDateAndTimeAL[i].ToString()
             };
             responseEntities.Add(book);
         }
@@ -262,9 +290,10 @@ public partial class personal_pages_borrow_ajax : System.Web.UI.Page {
 }
 
 public class Book {
+    public string publisherID { get; set; }
     public string Name { get; set; }
     public string Avatar { get; set; }
-    public string ID { get; set; }
+    public string BookID { get; set; }
     public string Star { get; set; }
     public string BookName { get; set; }
     public string BookImage { get; set; }

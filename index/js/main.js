@@ -32,4 +32,33 @@ $(function () {
 
     // wow.js
     new WOW().init();
+
+    // ui.form
+    $('.ui.form').form({
+        fields: {
+            loginAccount: {
+                identifier: 'loginAccount',
+                rules: [{
+                    type: 'empty',
+                    prompt: '請輸入您的學號'
+                }]
+            },
+            loginAccount: {
+                identifier: 'loginAccount',
+                rules: [{
+                    type: 'regExp',
+                    value: /\d{2}15\d{4}/,
+                    prompt: '請輸入正確的資管學號'
+                }]
+            },
+            loginPassword: {
+                identifier: 'loginPassword',
+                rules: [{
+                    type: 'empty',
+                    prompt: '請輸入您的密碼'
+                }]
+            }
+        }
+    });
+
 });

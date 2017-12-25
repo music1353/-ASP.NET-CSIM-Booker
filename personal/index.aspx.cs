@@ -31,7 +31,8 @@ public partial class personal_Default : System.Web.UI.Page {
         if (Session["isLogin"] == "Y") {
             userID = Session["userID"].ToString();
             Conn.Open();
-        } else {
+        }
+        else {
             Response.Redirect("../index.aspx");
         }
 
@@ -113,7 +114,8 @@ public partial class personal_Default : System.Web.UI.Page {
                             "[Member].StudentName, [Member].Picture, [TeachingMaterial].MaterialPicture, [TeachingMaterial].MaterialDescribe, " +
                             "[Lease].RentPlace, [Lease].RentDate, [Lease].RentTime " +
                             "FROM [Member], [TeachingMaterial], [Lease] " +
-                            "WHERE [Member].StudentID=[TeachingMaterial].PublisherID AND [Lease].TeachingMaterialID=[TeachingMaterial].TeachingMaterialID AND [TeachingMaterial].RentalSituation='0' " +
+                            "WHERE [Member].StudentID=[TeachingMaterial].PublisherID AND [Lease].TeachingMaterialID=[TeachingMaterial].TeachingMaterialID " +
+                            "AND [TeachingMaterial].RentalSituation='0' AND [TeachingMaterial].publisherID!='" + userID + "' " +
                             "ORDER BY NEWID()";
 
         SqlCommand allbookCmd = new SqlCommand(allbooksql, Conn);
@@ -162,7 +164,7 @@ public partial class personal_Default : System.Web.UI.Page {
         }
         // publisherstarsql end
 
-        
+
 
         Conn.Close();
 

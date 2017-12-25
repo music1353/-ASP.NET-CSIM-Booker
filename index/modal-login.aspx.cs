@@ -45,7 +45,7 @@ public partial class index_modal_login : System.Web.UI.Page {
 
                 Response.Redirect("../personal/index.aspx");
             } else if (password == loginPassword && Convert.ToInt16(suspension) == 1) {
-                Response.Write("<script language=javascript>alert('被封鎖了QQ，詳細請洽管理員');</script>");
+                Response.Write("<script language=javascript>alert('被封鎖了QQ，詳細請洽管理員');window.location.href='../index.aspx'</script>");
             } else if (password == loginPassword && Convert.ToInt16(permission) == 1) {
                 String userID = account;
                 Session["isLogin"] = "Y";
@@ -55,7 +55,6 @@ public partial class index_modal_login : System.Web.UI.Page {
                 Response.Redirect("admin/index.aspx");
             } else {
                 Response.Write("<script language=javascript>alert('密碼錯誤');window.location.href='../index.aspx';</script>");
-                Response.Redirect("../index.aspx");
             }
         } else {
             Response.Write("<script language=javascript>alert('無此帳號');window.location.href='../index.aspx';</script>");

@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
     <link rel="stylesheet" href="../css/basic.css">
     <link rel="stylesheet" href="../css/set-fonts.css">
     <link rel="stylesheet" href="../css/opinion-page-style.css">
@@ -19,9 +20,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
     <script src="https://cdn.bootcss.com/typed.js/2.0.6/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
     <script src="../js/main.js"></script>
 </head>
 <body>
+    <script>
+        function complete() {
+            $.alert({
+                useBootstrap: false,
+                title: '成功',
+                content: '意見反應成功!',
+            });
+        }
+    </script>
+
     <!-- #include file="templates/navbar.html" -->
     
     <!-- opinion-section start -->

@@ -13,16 +13,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
     <link rel="stylesheet" href="../css/basic.css">
     <link rel="stylesheet" href="../css/set-fonts.css">
     <link rel="stylesheet" href="../css/report-page-style.css">
     <link rel="stylesheet" href="../css/rwd-navbar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/report-page.js"></script>
 </head>
 <body>
+    <script>
+        function complete() {
+            $.alert({
+                useBootstrap: false,
+                title: '成功',
+                content: '檢舉成功!',
+            });
+        }
+    </script>
+
     <!-- #include file="templates/navbar.html" -->
 
     <!-- report-section start -->
@@ -35,12 +47,12 @@
                     <div class="eight wide computer twelve wide mobile column">
                         <form class="ui form" runat="server">
                             <div class="nine wide field">
-                                <label>被檢舉人名字</label>
-                                <input type="text" placeholder="Reported Name" name="reportName">
+                                <label>被檢舉人學號</label>
+                                <input type="text" placeholder="Reported ID" name="reportID">
                             </div>
                             <div class="ui field">
                                 <label>檢舉事由</label>
-                                <textarea rows="7" style="resize: none;" nmae='reportReasonTextarea' id='reportReason'></textarea>
+                                <textarea rows="7" style="resize: none;" name='reportReasonTextarea' id='reportReason'></textarea>
                             </div>
                             <input class="ui green button" type="submit" name="reportConfirmBtn" value="確認">
                             <div class="ui error message"></div>

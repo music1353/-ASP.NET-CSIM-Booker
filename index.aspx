@@ -14,17 +14,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
     <link rel="stylesheet" href="index/css/animate.css">
     <link rel="stylesheet" href="index/css/basic.css">
     <link rel="stylesheet" href="index/css/rwd-navbar.css">
     <link rel="stylesheet" href="index/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
     <script src="index/js/jq-easing/jquery.easing.min.js"></script>
     <script src="index/js/wow/wow.min.js"></script>
     <script src="index/js/main.js"></script>
 </head>
 <body>
+    <script>
+        function errorAccount() {
+            $.alert({
+                useBootstrap: false,
+                title: '登入失敗',
+                content: '無此帳號!',
+            });
+        }
+        function errorPassword() {
+            $.alert({
+                useBootstrap: false,
+                title: '登入失敗',
+                content: '密碼錯誤!',
+            });
+        }
+        function errorBlock() {
+            $.alert({
+                useBootstrap: false,
+                title: '登入失敗',
+                content: '被封鎖了QQ',
+            });
+        }
+    </script>
     <!-- navbar start -->
     <nav id="navbar">
         <div class="ui top fixed borderless menu">

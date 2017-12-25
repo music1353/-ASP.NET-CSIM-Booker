@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
     <link rel="stylesheet" href="css/ellipsis.css"/>
     <link rel="stylesheet" href="css/basic.css">
     <link rel="stylesheet" href="css/set-fonts.css">
@@ -20,6 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
     <script src="https://cdn.bootcss.com/typed.js/2.0.6/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/index-page.js"></script>
 </head>
@@ -145,7 +147,8 @@
                        <div class="column">
                           <div class="ui card" id="<%= teachingMaterialIDAL[i] %>">
                             <div class="content">
-                                <img class="ui avatar image" src="<%= publisherAvatarAL[i] %>""> <%= publisherNameAL[i] %>
+                                <img class="ui avatar image" src="<%= publisherAvatarAL[i] %>"">
+                                <span title="<%= publisherIDAL[i] %>""><%= publisherNameAL[i] %></span>
                             </div>
                             <div class="image">
                                 <img src="<%= materialPictureAL[i] %>"">

@@ -34,9 +34,10 @@ $(function () {
                         var myarray = $.parseJSON(data);
                         $.each(myarray, function (i, item) {
                             var card_template = '<div class="column">' +
-                                '<div class="ui card" id="' + item.ID + '">' +
+                                '<div class="ui card" id="' + item.BookID + '">' +
                                 '<div class="content">' +
-                                '<img class="ui avatar image" src="' + item.Avatar + '"> ' + item.Name +
+                                '<img class="ui avatar image" src="' + item.Avatar + '"> ' +
+                                '<span title="' + item.publisherID + '"">' + item.Name + '</span>' +
                                 '</div>' +
                                 '<div class="image">' +
                                 '<img src="' + item.BookImage + '">' +
@@ -159,9 +160,10 @@ $(function () {
                     var myarray = $.parseJSON(data);
                     $.each(myarray, function (i, item) {
                         var card_template = '<div class="column">' +
-                            '<div class="ui card" id="' + item.ID + '">' +
+                            '<div class="ui card" id="' + item.BookID + '">' +
                             '<div class="content">' +
-                            '<img class="ui avatar image" src="' + item.Avatar + '"> ' + item.Name +
+                            '<img class="ui avatar image" src="' + item.Avatar + '"> ' +
+                            '<span title="' + item.publisherID + '"">' + item.Name + '</span>' +
                             '</div>' +
                             '<div class="image">' +
                             '<img src="' + item.BookImage + '">' +
@@ -198,14 +200,54 @@ $(function () {
 
                     // loading hide
                     $("#loading").hide();
-                },
+
+                    // click borrow button show borrow-modal
+                    $('.ui.borrow.button').bind('click', function () {
+                        // Material ID
+                        var bookID = $(this).parent().parent().parent().attr('id');
+                        console.log(bookID);
+
+                        $('.borrow.modal').modal('show');
+
+                        // 確認借閱完成
+                        $('#borrowModal-button').bind('click', function () {
+                            console.log('借閱完成');
+
+                            // borrow-book-ajax
+                            $.ajax({
+                                url: "ajax/borrow-book-ajax.aspx",
+                                type: "POST",
+                                data: {
+                                    'bookID': bookID,
+                                },
+                                success: function () {
+                                    // alert
+                                    $.confirm({
+                                        useBootstrap: false,
+                                        title: '成功',
+                                        content: '借閱書籍成功!',
+                                        buttons: {
+                                            OK: function () {
+                                                window.location.reload();
+                                            }
+                                        }
+                                    });
+
+                                    // hide modal
+                                    $('.borrow.modal').modal('hide');
+
+                                }
+                            });
+                        });
+                    });
+                }
             });
         }
     });
 
-    // click borrow button show borrow-modal(first)
+    // click borrow button show borrow-modal
     $('.ui.borrow.button').bind('click', function () {
-        // 書籍主人的學號
+        // Material ID
         var bookID = $(this).parent().parent().parent().attr('id');
         console.log(bookID);
 
@@ -214,12 +256,32 @@ $(function () {
         // 確認借閱完成
         $('#borrowModal-button').bind('click', function () {
             console.log('借閱完成');
-            $('.borrow-complete.modal').modal({
-                onHide: function () {
-                    // 重新整理網頁
-                    location.reload();
+
+            // borrow-book-ajax
+            $.ajax({
+                url: "ajax/borrow-book-ajax.aspx",
+                type: "POST",
+                data: {
+                    'bookID': bookID,
                 },
-            }).modal('show');
+                success: function () {
+                    // alert
+                    $.confirm({
+                        useBootstrap: false,
+                        title: '成功',
+                        content: '借閱書籍成功!',
+                        buttons: {
+                            OK: function () {
+                                window.location.reload();
+                            }
+                        }
+                    });
+
+                    // hide modal
+                    $('.borrow.modal').modal('hide');
+
+                }
+            });
         });
     });
 

@@ -45,7 +45,7 @@ public partial class index : System.Web.UI.Page {
 
                     Response.Redirect("personal/index.aspx");
                 } else if (password == loginPassword && Convert.ToInt16(suspension) == 1) {
-                    Response.Write("<script language=javascript>alert('被封鎖了QQ，詳細請洽管理員');</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "errorBlock();", true);
                 } else if (password == loginPassword && Convert.ToInt16(permission) == 1) {
                     String userID = account;
                     Session["isLogin"] = "Y";
@@ -55,10 +55,10 @@ public partial class index : System.Web.UI.Page {
                     Response.Redirect("admin/index.aspx");
                 } else {
                     System.Diagnostics.Debug.WriteLine("不相等");
-                    Response.Write("<script language=javascript>alert('密碼錯誤');</script>");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "errorPassword();", true);
                 }
             } else {
-                Response.Write("<script language=javascript>alert('無此帳號');</script>");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "errorAccount();", true);
             }
 
             Cmd.Cancel();

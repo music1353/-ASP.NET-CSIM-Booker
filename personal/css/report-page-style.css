@@ -41,6 +41,11 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
+/* jqconfirm */
+
+.jconfirm-content-pane.no-scroll .jconfirm-content {
+    overflow-y: hidden !important;
+}
 
 /* footer */
 

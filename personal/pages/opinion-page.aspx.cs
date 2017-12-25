@@ -41,6 +41,22 @@ public partial class personal_pages_opinion_page : System.Web.UI.Page
         navbardr.Close();
         // navbarsql end
 
+        if (IsPostBack) {
+            String opinion = Request.Form["opinionTextarea"];
+
+            // opinionsql start
+            String opinionsql = "INSERT INTO Opinion "+
+                                "VALUES('"+opinion+"','"+userID+"') ";
+
+            SqlCommand opinionsqlCmd = new SqlCommand(opinionsql, Conn);
+            opinionsqlCmd.ExecuteReader();
+            // opinionsql end
+
+            // alert
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "complete();", true);
+        }
+
         Conn.Close();
+
     }
 }

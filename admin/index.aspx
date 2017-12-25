@@ -58,7 +58,7 @@
     <!-- table-example start -->
     <section id="table-section">
         <div class="ui container">
-            <table class="ui single line table">
+            <table class="ui selectable celled table">
                 <thead>
                     <tr>
                         <th>Title</th>

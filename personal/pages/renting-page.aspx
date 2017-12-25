@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
     <link rel="stylesheet" href="../css/ellipsis.css"/>
     <link rel="stylesheet" href="../css/basic.css">
     <link rel="stylesheet" href="../css/set-fonts.css">
@@ -20,6 +21,7 @@
     <link rel="stylesheet" href="../css/rwd-navbar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/renting-page.js"></script>
 </head>
@@ -32,40 +34,77 @@
             <div class="renting-book">
                 <h1>出租中書籍</h1>
                 <div class="four column ui stackable grid">
-                    <!-- card1 -->
-                    <div class="column">
-                        <div class="ui card">
-                            <div class="content">
-                                <img class="ui avatar image" src="../images/avatar-img/girl-1.png"><span class="renter">小美</span><span> - 租借者</span>
-                            </div>
-                            <div class="image">
-                                <img src="../images/temp-books-img/temp-calc.jpg">
-                            </div>
-                            <div class="content">
-                                <div class="header ellipsis">微積分筆記</div>
-                                <div class="description">
-                                    我做的超認真的呦！!
-                                </div>
-                            </div>
-                            <div class="extra content">
-                                <div class="left floated meta">
-                                    <div class="ui icon button" data-tooltip="[雙溪] 望星廣場" data-inverted="">
-                                        <i class="marker icon"></i>
+                    <% for (int i = 0; i < allLength; i++) { %>
+                        <% if (revertSituationAL[i].Equals("0")) { %>
+                            <div class="column">
+                                <div class="ui card" id="<%= teachingMaterialIDAL[i] %>">
+                                    <div class="content">
+                                        <img class="ui avatar image" src="<%= borrowerAvatarAL[i] %>""><span class="renter">
+                                        <span title="<%= borrowerIDAL[i] %>""><%= borrowerNameAL[i] %></span></span><span> - 租借者</span>
+                                    </div>
+                                    <div class="image">
+                                        <img src="<%= materialPictureAL[i] %>"">
+                                    </div>
+                                    <div class="content">
+                                        <div class="header ellipsis"><%= teachingMaterialNameAL[i] %></div>
+                                        <div class="description">
+                                            <%= materialDescribeAL[i] %>
+                                        </div>
+                                    </div>
+                                    <div class="extra content">
+                                        <div class="left floated meta">
+                                            <div class="ui icon button" data-tooltip="<%= revertPlaceAL[i] %>"" data-inverted="">
+                                                <i class="marker icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="left floated meta" style="margin-left: 10px;">
+                                            <div class="ui icon button" data-tooltip="<%= revertDateAndTimeAL[i] %>""" data-inverted="">
+                                                <i class="wait icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="right floated meta" style="margin-left: 10px;">
+                                            <button class="ui orange button">出租中</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="left floated meta" style="margin-left: 10px;">
-                                    <div class="ui icon button" data-tooltip="2017/11/30 上午10:00" data-inverted="">
-                                        <i class="wait icon"></i>
+                            </div>
+                        <% } %>
+
+                        <% else if (revertSituationAL[i].Equals("1")) {%>
+                            <div class="column">
+                                <div class="ui card" id="<%= teachingMaterialIDAL[i] %>">
+                                    <div class="content">
+                                        <img class="ui avatar image" src="<%= borrowerAvatarAL[i] %>""><span class="renter">
+                                        <span title="<%= borrowerIDAL[i] %>""><%= borrowerNameAL[i] %></span></span><span> - 租借者</span>
+                                    </div>
+                                    <div class="image">
+                                        <img src="<%= materialPictureAL[i] %>"">
+                                    </div>
+                                    <div class="content">
+                                        <div class="header ellipsis"><%= teachingMaterialNameAL[i] %></div>
+                                        <div class="description">
+                                            <%= materialDescribeAL[i] %>
+                                        </div>
+                                    </div>
+                                    <div class="extra content">
+                                        <div class="left floated meta">
+                                            <div class="ui icon button" data-tooltip="<%= revertPlaceAL[i] %>"" data-inverted="">
+                                                <i class="marker icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="left floated meta" style="margin-left: 10px;">
+                                            <div class="ui icon button" data-tooltip="<%= revertDateAndTimeAL[i] %>""" data-inverted="">
+                                                <i class="wait icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="right floated meta" style="margin-left: 10px;">
+                                            <button class="ui olive complete button">完成接收</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="right floated meta" style="margin-left: 10px;">
-                                    <button class="ui orange button">出租中</button>
-                                </div>
-
                             </div>
-                        </div>
-                    </div>
-
+                        <% } %>
+                    <% } %>  
                 </div>
             </div>
         </div>
@@ -90,21 +129,22 @@
         <div class="ui tiny coupled feedback modal">
             <div class="header" style="text-align: center;">評價回饋</div>
             <div class="content">
-                <form class="ui form" id="feedbackForm">
+                <form class="ui form">
                     <h4 class="ui dividing header">請給你的借書者一些評價吧！</h4>
                     <div class="ui field">
                         <label>星等</label>
                         <div class="ui huge star rating"></div>
+                        <input type="hidden" name="starHidden" id="starHidden" value="3"/>
                     </div>
                     <div class="ui field">
                         <label>回饋</label>
-                        <textarea rows="3" style="resize: none;"></textarea>
+                        <textarea rows="3" id="completeCommentTextarea" style="resize: none;"></textarea>
                     </div>
                 </form>
             </div>
             <div class="actions">
                 <div class="ui cancel red button">取消</div>
-                <input class="ui green button" type="submit" form="feedbackForm" value="確認">
+                <button class="ui green button" id="secondModal-button">確定</button>
             </div>
         </div>
     </div>

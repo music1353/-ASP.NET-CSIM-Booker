@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
     <link rel="stylesheet" href="../css/ellipsis.css"/>
     <link rel="stylesheet" href="../css/basic.css">
     <link rel="stylesheet" href="../css/set-fonts.css">
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="../css/rwd-navbar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/borrow-page.js"></script>
 </head>
@@ -72,7 +74,8 @@
                        <div class="column">
                           <div class="ui card" id="<%= teachingMaterialIDAL[i] %>">
                             <div class="content">
-                                <img class="ui avatar image" src="<%= publisherAvatarAL[i] %>""> <%= publisherNameAL[i] %>
+                                <img class="ui avatar image" src="<%= publisherAvatarAL[i] %>"">
+                                <span title="<%= publisherIDAL[i] %>""><%= publisherNameAL[i] %></span>
                             </div>
                             <div class="image">
                                 <img src="<%= materialPictureAL[i] %>"">
@@ -123,16 +126,6 @@
         </div>
     </div>
     <!-- borrow-modal end -->
-
-    <!-- borrow-complete-modal start -->
-    <div class="borrow-complete-modal">
-        <div class="ui mini coupled borrow-complete modal">
-            <div class="content" style="text-align: center; font-size: 25px;">
-                <i class="check circle outline icon" style="color: green;"></i>借閱完成！
-            </div>
-        </div>
-    </div>
-    <!-- borrow-complete-modal end -->
 
     <!-- #include file="templates/footer.html" -->
 </body>

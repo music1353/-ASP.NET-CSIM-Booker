@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/ellipsis.css"/>
+    <link rel="stylesheet" href="../css/ellipsis.css" />
     <link rel="stylesheet" href="../css/animate.css">
     <link rel="stylesheet" href="../css/timelify.css">
     <link rel="stylesheet" href="../css/basic.css">
@@ -30,9 +30,10 @@
     <!-- message-section start -->
     <section id="message-section">
         <div class="ui container">
-            <table class="ui single line table">
+            <table class="ui selectable celled table">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Title</th>
                         <th>Content</th>
                         <th>Time</th>
@@ -40,11 +41,23 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td class="collapsing">
+                            <div class="ui checkbox">
+                                <input type="checkbox" name="example">
+                                <label></label>
+                            </div>
+                        </td>
                         <td>借閱書籍</td>
                         <td>您向阿冠借閱微積分課本成功！</td>
                         <td>2017/11/5</td>
                     </tr>
                     <tr>
+                        <td class="collapsing">
+                            <div class="ui checkbox">
+                                <input type="checkbox" name="example">
+                                <label></label>
+                            </div>
+                        </td>
                         <td>歸還書籍</td>
                         <td>您向阿冠借閱的微積分課本已成功歸還！</td>
                         <td>2017/11/8</td>

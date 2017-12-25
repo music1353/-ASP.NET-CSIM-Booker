@@ -30,7 +30,7 @@ $(function () {
                         '<input class="chooseAvatar" type="radio" id="cb1" name="chooseImg" value="girl-1">' +
                         '<label for="cb1"><img src="images/avatar-img/girl-1.png"></label>' +
                     '</div>' +
-                    '<div class="chooseAvatar" class="four wide field wow rubberBand">' +
+                    '<div class="four wide field wow rubberBand">' +
                         '<input class="chooseAvatar" type="radio" id="cb2" name="chooseImg" value="girl-2">' +
                         '<label for="cb2"><img src="images/avatar-img/girl-2.png"></label>' +
                     '</div>' +

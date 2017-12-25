@@ -197,6 +197,11 @@ header {
     color: #333;
 }
 
+/* jqconfirm */
+
+.jconfirm-content-pane.no-scroll .jconfirm-content {
+    overflow-y: hidden !important;
+}
 
 /* footer */
 
