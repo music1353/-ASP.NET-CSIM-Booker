@@ -13,6 +13,7 @@ public partial class personal_pages_renting_page : System.Web.UI.Page {
     protected String userID;
     protected String name, avatar;
 
+    protected ArrayList rentalSituationAL = new ArrayList();
     protected ArrayList revertSituationAL = new ArrayList();
     protected ArrayList teachingMaterialIDAL = new ArrayList();
     protected ArrayList teachingMaterialNameAL = new ArrayList();
@@ -54,25 +55,39 @@ public partial class personal_pages_renting_page : System.Web.UI.Page {
 
         // rentingsql start
         String rentingsql = "SELECT [TeachingMaterial].TeachingMaterialID, [TeachingMaterial].TeachingMaterialName, " +
-                            "[TeachingMaterial].MaterialPicture, [TeachingMaterial].MaterialDescribe, " +
+                            "[TeachingMaterial].RentalSituation, [TeachingMaterial].MaterialPicture, [TeachingMaterial].MaterialDescribe, " +
                             "[Lease].BorrowerID, [Lease].RevertPlace, [Lease].RevertDate, [Lease].RevertTime, [Lease].RevertSituation " +
                             "FROM [Member], [TeachingMaterial], [Lease] " +
                             "WHERE [Member].StudentID=[TeachingMaterial].PublisherID AND [Lease].TeachingMaterialID=[TeachingMaterial].TeachingMaterialID " +
-                            "AND (PublisherID='" + userID + "' AND RentalSituation='1')";
+                            "AND (PublisherID='" + userID + "')";
 
         SqlCommand rentingCmd = new SqlCommand(rentingsql, Conn);
 
         SqlDataReader rentingdr = rentingCmd.ExecuteReader();
 
         while (rentingdr.Read()) {
-            revertSituationAL.Add(rentingdr["RevertSituation"].ToString());
-            borrowerIDAL.Add(rentingdr["BorrowerID"].ToString());
-            teachingMaterialIDAL.Add(rentingdr["TeachingMaterialID"].ToString());
-            teachingMaterialNameAL.Add(rentingdr["TeachingMaterialName"].ToString());
-            materialPictureAL.Add("../../" + rentingdr["MaterialPicture"].ToString());
-            materialDescribeAL.Add(rentingdr["MaterialDescribe"].ToString());
-            revertPlaceAL.Add(rentingdr["RevertPlace"].ToString());
-            revertDateAndTimeAL.Add(rentingdr["RevertDate"].ToString() + " " + rentingdr["RevertTime"].ToString());
+            if(rentingdr["BorrowerID"] == DBNull.Value) {
+                borrowerIDAL.Add("NULL");
+                revertSituationAL.Add("NULL");
+                rentalSituationAL.Add(rentingdr["RentalSituation"].ToString());
+                teachingMaterialIDAL.Add(rentingdr["TeachingMaterialID"].ToString());
+                teachingMaterialNameAL.Add(rentingdr["TeachingMaterialName"].ToString());
+                materialPictureAL.Add("../../" + rentingdr["MaterialPicture"].ToString());
+                materialDescribeAL.Add(rentingdr["MaterialDescribe"].ToString());
+                revertPlaceAL.Add(rentingdr["RevertPlace"].ToString());
+                revertDateAndTimeAL.Add(rentingdr["RevertDate"].ToString() + " " + rentingdr["RevertTime"].ToString());
+            }
+            else {
+                borrowerIDAL.Add(rentingdr["BorrowerID"].ToString());
+                revertSituationAL.Add(rentingdr["RevertSituation"].ToString());
+                rentalSituationAL.Add(rentingdr["RentalSituation"].ToString());
+                teachingMaterialIDAL.Add(rentingdr["TeachingMaterialID"].ToString());
+                teachingMaterialNameAL.Add(rentingdr["TeachingMaterialName"].ToString());
+                materialPictureAL.Add("../../" + rentingdr["MaterialPicture"].ToString());
+                materialDescribeAL.Add(rentingdr["MaterialDescribe"].ToString());
+                revertPlaceAL.Add(rentingdr["RevertPlace"].ToString());
+                revertDateAndTimeAL.Add(rentingdr["RevertDate"].ToString() + " " + rentingdr["RevertTime"].ToString());
+            }
         }
 
         allLength = Convert.ToInt16(teachingMaterialIDAL.Count);
@@ -83,19 +98,26 @@ public partial class personal_pages_renting_page : System.Web.UI.Page {
 
         // searchBorrowerName & Avatar start
         foreach (String id in borrowerIDAL) {
-            String borrowersql = "SELECT [Member].StudentName, [Member].Picture " +
+            if( id=="NULL") {
+                borrowerNameAL.Add("NULL");
+                borrowerAvatarAL.Add("NULL");
+            }
+            else {
+                String borrowersql = "SELECT [Member].StudentName, [Member].Picture " +
                                  "FROM [Member] " +
                                  "WHERE [Member].StudentID='" + id + "'";
-            SqlCommand borrowerCmd = new SqlCommand(borrowersql, Conn);
-            SqlDataReader borrowerdr = borrowerCmd.ExecuteReader();
+                SqlCommand borrowerCmd = new SqlCommand(borrowersql, Conn);
+                SqlDataReader borrowerdr = borrowerCmd.ExecuteReader();
 
-            while (borrowerdr.Read()) {
-                borrowerNameAL.Add(borrowerdr["StudentName"].ToString());
-                borrowerAvatarAL.Add("../" + borrowerdr["Picture"].ToString());
+                while (borrowerdr.Read()) {
+                    borrowerNameAL.Add(borrowerdr["StudentName"].ToString());
+                    borrowerAvatarAL.Add("../" + borrowerdr["Picture"].ToString());
+                }
+
+                borrowerCmd.Cancel();
+                borrowerdr.Close();
             }
-
-            borrowerCmd.Cancel();
-            borrowerdr.Close();
+            
         }
         // searchBorrowerName & Avatar end
 

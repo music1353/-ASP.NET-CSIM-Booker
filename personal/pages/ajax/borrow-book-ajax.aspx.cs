@@ -52,7 +52,7 @@ public partial class personal_pages_ajax_borrow_book_ajax : System.Web.UI.Page {
         // findmaxLetterIDsql end
 
         String insertLettersql = "INSERT INTO Letter " +
-                                 "VALUES('" + nextLetterID + "', '書籍已出借', '您所刊登的教材已被成功租借', '" + publisherID + "', '" + bookID + "')";
+                                 "VALUES('" + nextLetterID + "', '書籍已出借', '您所刊登的教材已被成功租借', '" + publisherID + "', '0', '" + bookID + "')";
         SqlCommand insertLetterCmd = new SqlCommand(insertLettersql, Conn);
         SqlDataReader insertLetterdr = insertLetterCmd.ExecuteReader();
         insertLetterCmd.Cancel();

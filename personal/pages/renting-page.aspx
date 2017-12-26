@@ -35,12 +35,47 @@
                 <h1>出租中書籍</h1>
                 <div class="four column ui stackable grid">
                     <% for (int i = 0; i < allLength; i++) { %>
-                        <% if (revertSituationAL[i].Equals("0")) { %>
+                        <% if (rentalSituationAL[i].Equals("0")) { %>
+                            <div class="column">
+                                <div class="ui card" id="<%= teachingMaterialIDAL[i] %>">
+                                    <div class="content">
+                                        <img class="ui avatar image" src="<%= avatar %>""><span class="renter">
+                                        <span><%= name %></span></span>
+                                    </div>
+                                    <div class="image">
+                                        <img src="<%= materialPictureAL[i] %>"">
+                                    </div>
+                                    <div class="content">
+                                        <div class="header ellipsis"><%= teachingMaterialNameAL[i] %></div>
+                                        <div class="description">
+                                            <%= materialDescribeAL[i] %>
+                                        </div>
+                                    </div>
+                                    <div class="extra content">
+                                        <div class="left floated meta">
+                                            <div class="ui icon button" data-tooltip="<%= revertPlaceAL[i] %>"" data-inverted="">
+                                                <i class="marker icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="left floated meta" style="margin-left: 10px;">
+                                            <div class="ui icon button" data-tooltip="<%= revertDateAndTimeAL[i] %>""" data-inverted="">
+                                                <i class="wait icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="right floated meta" style="margin-left: 10px;">
+                                            <button class="ui button">刊登中</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+
+                        <% else if (rentalSituationAL[i].Equals("1") && revertSituationAL[i].Equals("0")) { %>
                             <div class="column">
                                 <div class="ui card" id="<%= teachingMaterialIDAL[i] %>">
                                     <div class="content">
                                         <img class="ui avatar image" src="<%= borrowerAvatarAL[i] %>""><span class="renter">
-                                        <span title="<%= borrowerIDAL[i] %>""><%= borrowerNameAL[i] %></span></span><span> - 租借者</span>
+                                        <span title="<%= borrowerIDAL[i] %>"><%= borrowerNameAL[i] %></span></span><span> - 租借者</span>
                                     </div>
                                     <div class="image">
                                         <img src="<%= materialPictureAL[i] %>"">
@@ -70,12 +105,12 @@
                             </div>
                         <% } %>
 
-                        <% else if (revertSituationAL[i].Equals("1")) {%>
+                        <% else if (rentalSituationAL[i].Equals("1") && revertSituationAL[i].Equals("1")) {%>
                             <div class="column">
                                 <div class="ui card" id="<%= teachingMaterialIDAL[i] %>">
                                     <div class="content">
                                         <img class="ui avatar image" src="<%= borrowerAvatarAL[i] %>""><span class="renter">
-                                        <span title="<%= borrowerIDAL[i] %>""><%= borrowerNameAL[i] %></span></span><span> - 租借者</span>
+                                        <span title="<%= borrowerIDAL[i] %>"><%= borrowerNameAL[i] %></span></span><span> - 租借者</span>
                                     </div>
                                     <div class="image">
                                         <img src="<%= materialPictureAL[i] %>"">

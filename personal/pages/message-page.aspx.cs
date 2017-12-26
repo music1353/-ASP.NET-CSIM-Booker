@@ -47,7 +47,7 @@ public partial class personal_pages_message_page : System.Web.UI.Page {
         // lettersql start
         String lettersql = "SELECT [Letter].LetterID, [Letter].LetterTitle, [Letter].LetterContent " +
                            "FROM Letter " +
-                           "WHERE Letter.Recipient='" + userID + "'";
+                           "WHERE Letter.Recipient='" + userID + "' AND Letter.Visible='0'";
         SqlCommand letterCmd = new SqlCommand(lettersql, Conn);
         SqlDataReader letterdr = letterCmd.ExecuteReader();
 
