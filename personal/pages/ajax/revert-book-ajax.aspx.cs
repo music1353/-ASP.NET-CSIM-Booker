@@ -54,7 +54,7 @@ public partial class personal_pages_ajax_revert_book_ajax : System.Web.UI.Page {
         // findmaxLetterIDsql end
 
         String insertLettersql = "INSERT INTO Letter " +
-                                 "VALUES('" + nextLetterID + "', '借借者已將書籍歸還', '您的書已被租借者完成評價','" + publisherID + "', '0')";
+                                 "VALUES('" + nextLetterID + "', '借閱者已將書籍歸還', '您的書已被租借者完成評價','" + publisherID + "', '0')";
         SqlCommand insertLetterCmd = new SqlCommand(insertLettersql, Conn);
         SqlDataReader insertLetterdr = insertLetterCmd.ExecuteReader();
         insertLetterCmd.Cancel();

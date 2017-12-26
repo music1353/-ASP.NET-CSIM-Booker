@@ -93,9 +93,8 @@ public partial class personal_pages_post_page : System.Web.UI.Page {
 
             postbookCmd.Cancel();
             // postbooksql end
-            
-            System.Diagnostics.Debug.Write(changeTime);
-            System.Diagnostics.Debug.Write(returnTime);
+
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "complete();", true);
         }
 
         Conn.Close();

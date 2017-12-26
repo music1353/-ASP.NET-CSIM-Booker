@@ -41,7 +41,6 @@
                         <div class="menu">
                             <a href="pages/personal-page.aspx" class="item"><i class="user circle icon"></i>個人資料</a>
                             <a href="pages/message-page.aspx" class="item" id="messageBtn"><i class="alarm icon"></i>通知訊息</a>
-                            <a href="pages/history-page.aspx" class="item"><i class="cube icon"></i>歷史紀錄</a>
                             <a href="pages/borrowing-page.aspx" class="item"><i class="book icon"></i>借閱中書籍</a>
                             <a href="pages/renting-page.aspx" class="item"><i class="road icon"></i>出租中書籍</a>
                             <div class="ui divider"></div>
@@ -61,7 +60,6 @@
                             <div class="divider"></div>
                             <a href="pages/personal-page.aspx" class="item"><i class="user circle icon"></i>個人資料</a>
                             <a href="pages/message-page.aspx" class="item"><i class="alarm icon"></i>通知訊息</a>
-                            <a href="pages/history-page.aspx" class="item"><i class="cube icon"></i>歷史紀錄</a>
                             <a href="pages/borrowing-page.aspx" class="item"><i class="book icon"></i>借閱中書籍</a>
                             <a href="pages/renting-page.aspx" class="item"><i class="road icon"></i>出租中書籍</a>
                             <div class="ui divider"></div>
