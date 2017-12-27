@@ -22,7 +22,38 @@
 </head>
 <body>
     <!-- #include file="templates/navbar.html" -->
-
+    <!-- table-example start -->
+    <section id="table-section">
+        <div class="ui container">
+            <table class="ui single line table">
+                <thead>
+                    <tr>
+                        <th><center>StudentID</center></th>
+                        <th><center>StudentName</center></th>
+                        <th><center>Password</center></th>
+                        <th><center>Picture</center></th>
+                        <th><center>ViolativeFrequency</center></th>
+                        <th><center>Permission</center></th>
+                        <th><center>Suspension</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for (int i = 0; i < memberInfoLength; i++) { %>
+                    <tr>
+                        <td><center><% = studentID[i] %></center></td>
+                        <td><center><% = studentName[i] %></center></td>
+                        <td><center><% = password[i] %></center></td>
+                        <td><center><img width="50p" height="50p" src="<%= picture[i] %>"></center></td>
+                        <td><center><% = violativeFrequency[i] %></center></td>
+                        <td><center><% = permission[i] %></center></td>
+                        <td><center><% = suspension[i] %></center></td>
+                    </tr>
+                 <% } %>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!-- table-example end -->
     <!-- #include file="templates/footer.html" -->
 </body>
 </html>

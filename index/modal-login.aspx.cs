@@ -52,7 +52,7 @@ public partial class index_modal_login : System.Web.UI.Page {
                 Session["isAdmin"] = "Y";
                 Session["userID"] = userID;
 
-                Response.Redirect("admin/index.aspx");
+                Response.Redirect("../admin/index.aspx");
             } else {
                 Response.Write("<script language=javascript>alert('密碼錯誤');window.location.href='../index.aspx';</script>");
             }

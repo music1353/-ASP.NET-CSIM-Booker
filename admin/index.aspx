@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="css/rwd-navbar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="https://cdn.bootcss.com/typed.js/2.0.6/typed.min.js"></script>
     <script src="js/main.js"></script>
 </head>
 <body>
@@ -55,33 +56,24 @@
     </nav>
     <!-- navbar end -->
 
-    <!-- table-example start -->
-    <section id="table-section">
+    <!-- sayHello-section start -->
+    <section id="sayHello-section">
         <div class="ui container">
-            <table class="ui selectable celled table">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Content</th>
-                        <th>Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>借閱書籍</td>
-                        <td>您向阿冠借閱微積分課本成功！</td>
-                        <td>2017/11/5</td>
-                    </tr>
-                    <tr>
-                        <td>歸還書籍</td>
-                        <td>您向阿冠借閱的微積分課本已成功歸還！</td>
-                        <td>2017/11/8</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="hello">
+                <span id="typed"></span>
+                <script>
+                    var typed = new Typed('#typed', {
+                        strings: ["你好呀! ^1000 管理員zz", "今天^1500，你封鎖人了嗎？"],
+                        smartBackspace: true,
+                        startDelay: 1000,
+                        typeSpeed: 200,
+                        loop: true,
+                    });
+                </script>
+            </div>
         </div>
     </section>
-    <!-- table-example end -->
+    <!-- sayHello-section end -->
 
     <!-- footer start -->
     <footer>

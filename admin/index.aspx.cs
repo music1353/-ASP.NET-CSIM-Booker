@@ -6,15 +6,29 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class admin_index : System.Web.UI.Page {
-
+ 
     protected void Page_Load(object sender, EventArgs e) {
 
-        if (Session["isLogin"] == "Y" && Session["isAdmin"] == "Y") {
-            // pass
-        } else {
+        if(checkLogin())
+        {
+
+        }
+        else
+        {
             Response.Redirect("../index.aspx");
         }
+    }
 
-        // TODO
+    private bool checkLogin()
+    {
+        if (Session["isLogin"] == "Y" && Session["isAdmin"] == "Y")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+            Response.Redirect("../index.aspx");
+        }
     }
 }

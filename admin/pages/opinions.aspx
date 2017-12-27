@@ -22,7 +22,30 @@
 </head>
 <body>
     <!-- #include file="templates/navbar.html" -->
-
+    <!-- table-example start -->
+    <section id="table-section">
+        <div class="ui container">
+            <table class="ui single line table">
+                <thead>
+                    <tr>
+                        <th><center>OpinionID</center></th>
+                        <th><center>Content</center></th>
+                        <th><center>StudentID</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for (int i = 0; i < opinionInfoLength; i++) { %>
+                    <tr>
+                        <td><center><% = opinionID[i] %></center></td>
+                        <td><center><% = content[i] %></center></td>
+                        <td><center><% = studentID[i] %></center></td>
+                    </tr>
+                 <% } %>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!-- table-example end -->
     <!-- #include file="templates/footer.html" -->
 </body>
 </html>
