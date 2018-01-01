@@ -12,15 +12,32 @@
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
     <link rel="stylesheet" href="../css/basic.css">
     <link rel="stylesheet" href="../css/set-fonts.css">
     <link rel="stylesheet" href="../css/personal-page-style.css">
     <link rel="stylesheet" href="../css/rwd-navbar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
     <script src="../js/personal-page.js"></script>
 </head>
 <body>
+    <script>
+        function complete() {
+            $.confirm({
+                useBootstrap: false,
+                title: '成功',
+                content: '更改密碼成功!',
+                buttons: {
+                    OK: function () {
+                        window.location.href="personal-page.aspx";
+                    }
+                }
+            });
+        }
+    </script>
+
     <!-- #include file="templates/navbar.html" -->
 
     <!-- personal-section start -->

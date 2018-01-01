@@ -74,7 +74,7 @@ public partial class personal_pages_personal_page : System.Web.UI.Page {
             newpasswordCmd.Cancel();
             // personalsql end
 
-            Response.Write("<script language=javascript>alert('修改成功!'); window.location.href='personal-page.aspx';</script>");
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "complete();", true);
         }
 
         Conn.Close();

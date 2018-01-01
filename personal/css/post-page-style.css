@@ -29,6 +29,11 @@
     margin-top: 35px;
 }
 
+/* jqconfirm */
+
+.jconfirm-content-pane.no-scroll .jconfirm-content {
+    overflow-y: hidden !important;
+}
 
 /* footer */
 
